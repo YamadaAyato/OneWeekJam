@@ -32,11 +32,21 @@ public class PlayerInputController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///         梯子を登れるかの判定
+    /// </summary>
+    /// <param name="ladder"></param>
+    /// <returns></returns>
     private bool CanMoveUp(Ladder ladder)
     {
         return transform.position.y < ladder.transform.position.y;
     }
 
+    /// <summary>
+    ///         梯子を下れるかの判定
+    /// </summary>
+    /// <param name="ladder"></param>
+    /// <returns></returns>
     private bool CanMoveDown(Ladder ladder)
     {
         return transform.position.y > ladder.transform.position.y;
