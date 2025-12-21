@@ -24,13 +24,13 @@ public class PlayerMover : MonoBehaviour
     ///         プレイヤー移動
     /// </summary>
     /// <param name="dir"></param>
-    public void Move(DirectionType dir)
+    public void Move(DirectionType dir, int step)
     {
         if (_isMoving) return;
 
         // 移動開始通知
         OnMoveStarted?.Invoke(dir);
-        StartCoroutine(MoveRoutine(dir));
+        StartCoroutine(MoveRoutine(dir, step));
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ public class PlayerMover : MonoBehaviour
     /// </summary>
     /// <param name="dir"></param>
     /// <returns></returns>
-    private IEnumerator MoveRoutine(DirectionType dir)
+    private IEnumerator MoveRoutine(DirectionType dir, int step)
     {
         _isMoving = true;
 
@@ -46,7 +46,7 @@ public class PlayerMover : MonoBehaviour
 
         // 初期位置とターゲットとなる場所を計算
         Vector3 startPos = transform.position;
-        Vector3 targetPos = startPos + (Vector3)(direction.normalized * _moveDistance);
+        Vector3 targetPos = startPos + (Vector3)(direction.normalized * _moveDistance * step);
 
         // 位置を補間して滑らかに移動
         float t = 0f;
