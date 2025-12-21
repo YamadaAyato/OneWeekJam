@@ -14,12 +14,12 @@ public class AudioManager : MonoBehaviour
         [SerializeField] private AudioClip _clip;
         [SerializeField] private string _name;
     }
-    [Header("ƒvƒŒƒCƒ„[")]
+    [Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼")]
     [ReadOnly, SerializeField]private AudioSource _bgmPlayer;
 
-    [Header("SEƒŠƒXƒg")]
+    [Header("SEãƒªã‚¹ãƒˆ")]
     [SerializeField] private List<SoundData> _seList;
-    [Header("BGMƒŠƒXƒg")]
+    [Header("BGMãƒªã‚¹ãƒˆ")]
     [SerializeField] private List<SoundData> _bgmList;
 
     private void Awake()
@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
     }
 
     /// <summary>
-    /// SEÄ¶
+    /// SEå†ç”Ÿ
     /// </summary>
     /// <param name="name"></param>
     /// <param name="volume"></param>
@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// BGMÄ¶(ƒ‹[ƒv)
+    /// BGMå†ç”Ÿ(ãƒ«ãƒ¼ãƒ—)
     /// </summary>
     /// <param name="name"></param>
     public void PlayBGM(string name)
