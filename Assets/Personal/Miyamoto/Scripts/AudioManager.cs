@@ -12,14 +12,14 @@ public class AudioManager : MonoBehaviour
         [SerializeField] private AudioClip _se;
         [SerializeField] private AudioClip _bgm;
     }
+    [Header("プレイヤー")]
+    [SerializeField] private AudioSource _sePlayer;
+    [SerializeField] private AudioSource _bgmPlayer;
+
     [Header("SEリスト")]
     [SerializeField] private List<AudioClip> _seList;
     [Header("BGMリスト")]
     [SerializeField] private List<AudioClip> _bgmList;
-
-    private AudioSource _sePlayer;
-    private AudioSource _bgmPlayer;
-
     /// <summary>
     /// SE再生
     /// </summary>
