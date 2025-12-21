@@ -10,6 +10,15 @@ public class StageManager : MonoBehaviour
 
     private void Awake()
     {
-        
+        //_player = FindAnyObjectByType<Player>();
+        //_startPos = GameObject.Find("Start").transform;
+        //_moveCount = StageData.MoveCount;
+    }
+    /// <summary>
+    /// 変数を初期化する
+    /// </summary>
+    private void Init()
+    {
+
     }
 }
