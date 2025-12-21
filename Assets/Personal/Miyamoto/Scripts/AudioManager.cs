@@ -34,6 +34,9 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(this);
         }
+        var sources = GetComponentsInChildren<AudioSource>();
+        _sePlayer = sources[0];
+        _bgmPlayer = sources[1];
     }
 
     /// <summary>
