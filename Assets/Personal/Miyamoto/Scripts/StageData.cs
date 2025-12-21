@@ -1,0 +1,16 @@
+using UnityEngine;
+/// <summary>
+/// 選んだステージの情報を取得するクラス
+/// </summary>
+public static class StageData
+{
+    /// <summary>行動回数</summary>
+    public static int MoveCount;
+    /// <summary>ステージプレファブ</summary>
+    public static GameObject Stage;
+    public static void Init(int moveCount, GameObject stage)
+    {
+        MoveCount = moveCount;
+        Stage = stage;
+    }
+}
