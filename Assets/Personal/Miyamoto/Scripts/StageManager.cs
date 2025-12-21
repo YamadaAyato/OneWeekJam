@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
     public Queue<DirectionType> CommandQueue => _commandQueue;
 
     [SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _doppelganger;
     [SerializeField] private Transform _startPos;
     [SerializeField] private int _moveCount;
     [SerializeField] private GameObject _stage;
@@ -42,7 +43,15 @@ public class StageManager : MonoBehaviour
     }
     private void AddCommand(DirectionType type)
     {
-        _commandQueue.Enqueue(type);
-        Debug.Log($"<color=lime>{type}</color> : をQueueに格納");
+        if (_moveCount < 0)
+        {
+            Instantiate(_doppelganger, _startPos);
+        }
+        else
+        {
+            _commandQueue.Enqueue(type);
+            _moveCount--;
+            Debug.Log($"<color=lime>{type}</color> : をQueueに格納");
+        }
     }
 }
