@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 /// <summary>
 /// 全体の行動のマネージャークラス
@@ -9,6 +11,8 @@ public class StageManager : MonoBehaviour
     public int MoveCount => _moveCount;
     public Queue<DirectionType> CommandQueue => _commandQueue;
 
+    public event Action Reset;
+    public event Action Move;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _doppelganger;
     [SerializeField] private Transform _startPos;
@@ -21,7 +25,7 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         Init();
-        //Instantiate(_player, _startPos);
+        //Instantiate(_player, _startPos.position, Quaternion.identity);
     }
     private void OnEnable()
     {
@@ -44,15 +48,24 @@ public class StageManager : MonoBehaviour
     }
     private void AddCommand(DirectionType type)
     {
-        if (_moveCount < 0 && !_isSpawn)
+        if (_moveCount <= 0 && !_isSpawn)
         {
-            Instantiate(_doppelganger, _startPos);
+            Instantiate(_doppelganger, _startPos.position, Quaternion.identity);
+            _isSpawn = true;
         }
-        else
+        else if(_moveCount > 0)
         {
             _commandQueue.Enqueue(type);
             _moveCount--;
             Debug.Log($"<color=lime>{type}</color> : をQueueに格納");
         }
+        Move?.Invoke();
+    }
+
+    public void ResetStage()
+    {
+        Reset?.Invoke();
+        _commandQueue.Clear();
+        _player.transform.position = _startPos.position;
     }
 }
