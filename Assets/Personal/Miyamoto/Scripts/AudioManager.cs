@@ -8,19 +8,19 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class SoundData
     {
-        public AudioClip Se => _se;
-        public AudioClip Bgm=> _bgm;
+        public AudioClip Clip => _clip;
+        public string Name => _name;
 
-        [SerializeField] private AudioClip _se;
-        [SerializeField] private AudioClip _bgm;
+        [SerializeField] private AudioClip _clip;
+        [SerializeField] private string _name;
     }
     [Header("プレイヤー")]
-    private AudioSource _bgmPlayer;
+    [ReadOnly, SerializeField]private AudioSource _bgmPlayer;
 
     [Header("SEリスト")]
-    [SerializeField] private List<AudioClip> _seList;
+    [SerializeField] private List<SoundData> _seList;
     [Header("BGMリスト")]
-    [SerializeField] private List<AudioClip> _bgmList;
+    [SerializeField] private List<SoundData> _bgmList;
 
     private void Awake()
     {
@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var se in _seList)
         {
-            if (se.name == name)
+            if (se.Name == name)
             {
                 GameObject sePlayer = new GameObject("SEPlayer");
                 sePlayer.transform.SetParent(transform);
@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
                 source.spatialBlend = 0f;
                 source.volume = volume;
                 source.Play();
-                Destroy(sePlayer, se.length);
+                Destroy(sePlayer, se.Clip.length);
             }
         }
     }
@@ -66,10 +66,10 @@ public class AudioManager : MonoBehaviour
     {
         foreach (var bgm in _bgmList)
         {
-            if (bgm.name == name)
+            if (bgm.Name == name)
             {
                 _bgmPlayer.loop = true;
-                _bgmPlayer.clip = bgm;
+                _bgmPlayer.clip = bgm.Clip;
                 _bgmPlayer.Play();
             }
         }
