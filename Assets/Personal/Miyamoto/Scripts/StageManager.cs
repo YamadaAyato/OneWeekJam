@@ -47,7 +47,7 @@ public class StageManager : MonoBehaviour
         //_stage = StageData.Stage;
     }
     /// <summary>
-    /// コマンドQueunに引数で与えられものを追加する
+    /// コマンドQueueに引数で与えられものを追加する
     /// </summary>
     /// <param name="type"></param>
     private void AddCommand(DirectionType type)
