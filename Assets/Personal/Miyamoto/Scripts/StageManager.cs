@@ -46,6 +46,10 @@ public class StageManager : MonoBehaviour
         //_moveCount = StageData.MoveCount;
         //_stage = StageData.Stage;
     }
+    /// <summary>
+    /// コマンドQueunに引数で与えられものを追加する
+    /// </summary>
+    /// <param name="type"></param>
     private void AddCommand(DirectionType type)
     {
         if (_moveCount <= 0 && !_isSpawn)
@@ -61,7 +65,9 @@ public class StageManager : MonoBehaviour
         }
         Move?.Invoke();
     }
-
+    /// <summary>
+    /// リセットが呼ばれたときに呼ぶ
+    /// </summary>
     public void ResetStage()
     {
         Reset?.Invoke();

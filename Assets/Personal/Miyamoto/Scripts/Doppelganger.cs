@@ -81,6 +81,9 @@ public class Doppelganger : MonoBehaviour
             DirectionType.Right => Vector2.right
         };
     }
+    /// <summary>
+    /// リセット
+    /// </summary>
     private void OnReset()
     {
         _moveQueue.Clear();
