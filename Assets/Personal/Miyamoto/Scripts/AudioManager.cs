@@ -53,6 +53,7 @@ public class AudioManager : MonoBehaviour
                 var source = sePlayer.AddComponent<AudioSource>();
                 source.spatialBlend = 0f;
                 source.volume = volume;
+                source.clip = se.Clip;
                 source.Play();
                 Destroy(sePlayer, se.Clip.length);
             }
