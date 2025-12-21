@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+
     [System.Serializable]
     public class SoundData
     {
@@ -20,6 +22,20 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<AudioClip> _seList;
     [Header("BGMÉäÉXÉg")]
     [SerializeField] private List<AudioClip> _bgmList;
+
+    private void Awake()
+    {
+        if (!Instance)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     /// <summary>
     /// SEçƒê∂
     /// </summary>
