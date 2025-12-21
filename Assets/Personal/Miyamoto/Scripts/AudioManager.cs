@@ -13,4 +13,7 @@ public class AudioManager : MonoBehaviour
         [SerializeField] private List<AudioClip> _seList;
         [SerializeField] private List<AudioClip> _bgmList;
     }
+
+    private GameObject _sePlayer;
+    private GameObject _bgmPlayer;
 }
