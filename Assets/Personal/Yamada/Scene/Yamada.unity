@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMover
   _moveDistance: 1
-  _moveTime: 0.2
+  _moveTime: 0.4
 --- !u!114 &1448928084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce26297c1ab04df4fad5aec53e438ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInputController
-  _playerMover: {fileID: 0}
+  _playerMover: {fileID: 1448928083}
 --- !u!212 &1448928085
 SpriteRenderer:
   m_ObjectHideFlags: 0
