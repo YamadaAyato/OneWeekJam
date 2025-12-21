@@ -7,6 +7,9 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class SoundData
     {
+        public List<AudioClip> SeList => _seList;
+        public List<AudioClip> BgmList => _bgmList;
+
         [SerializeField] private List<AudioClip> _seList;
         [SerializeField] private List<AudioClip> _bgmList;
     }
