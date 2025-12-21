@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-///         プレイヤーに入力管理クラス
+///         プレイヤーの入力管理クラス
 /// </summary>
 public class PlayerInputController : MonoBehaviour
 {
