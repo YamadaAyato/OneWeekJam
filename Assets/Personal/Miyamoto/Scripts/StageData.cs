@@ -8,7 +8,7 @@ public static class StageData
     public static int MoveCount;
     /// <summary>ステージプレファブ</summary>
     public static GameObject Stage;
-    public static void Init(int moveCount, GameObject stage)
+    public static void GetStageInfo(int moveCount, GameObject stage)
     {
         MoveCount = moveCount;
         Stage = stage;
