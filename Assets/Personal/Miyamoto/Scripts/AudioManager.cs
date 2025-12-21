@@ -15,8 +15,7 @@ public class AudioManager : MonoBehaviour
         [SerializeField] private AudioClip _bgm;
     }
     [Header("プレイヤー")]
-    [SerializeField] private AudioSource _sePlayer;
-    [SerializeField] private AudioSource _bgmPlayer;
+    private AudioSource _bgmPlayer;
 
     [Header("SEリスト")]
     [SerializeField] private List<AudioClip> _seList;
@@ -34,24 +33,28 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(this);
         }
-        var sources = GetComponentsInChildren<AudioSource>();
-        _sePlayer = sources[0];
-        _bgmPlayer = sources[1];
+        _bgmPlayer = GetComponentInChildren<AudioSource>();
     }
 
     /// <summary>
     /// SE再生
     /// </summary>
     /// <param name="name"></param>
-    public void PlaySE(string name)
+    /// <param name="volume"></param>
+    public void PlaySE(string name, float volume)
     {
-        if (_sePlayer == null) return;
-
         foreach (var se in _seList)
         {
             if (se.name == name)
             {
-                _sePlayer.PlayOneShot(se);
+                GameObject sePlayer = new GameObject("SEPlayer");
+                sePlayer.transform.SetParent(transform);
+
+                var source = sePlayer.AddComponent<AudioSource>();
+                source.spatialBlend = 0f;
+                source.volume = volume;
+                source.Play();
+                Destroy(sePlayer, se.length);
             }
         }
     }
