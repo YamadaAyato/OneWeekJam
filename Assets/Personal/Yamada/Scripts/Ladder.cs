@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class Ladder : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int Step => _step;
+    public float CurrentPos => transform.position.y;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private int _step;
 }
