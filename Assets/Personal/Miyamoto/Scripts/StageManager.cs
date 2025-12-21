@@ -16,6 +16,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private GameObject _stage;
     [SerializeField] private PlayerMover _mover;
     [SerializeField] private Queue<DirectionType> _commandQueue = new Queue<DirectionType>();
+    private bool _isSpawn;
 
     private void Awake()
     {
@@ -43,7 +44,7 @@ public class StageManager : MonoBehaviour
     }
     private void AddCommand(DirectionType type)
     {
-        if (_moveCount < 0)
+        if (_moveCount < 0 && !_isSpawn)
         {
             Instantiate(_doppelganger, _startPos);
         }
