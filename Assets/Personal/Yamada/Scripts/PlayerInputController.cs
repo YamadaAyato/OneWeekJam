@@ -3,25 +3,42 @@ using UnityEngine;
 /// <summary>
 ///         プレイヤーの入力管理クラス
 /// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerInputController : MonoBehaviour
 {
-    [SerializeField] PlayerMover _playerMover;
+    [SerializeField] private PlayerMover _playerMover;
+    [SerializeField] private PlayerCollider _playerCollider;
 
-    void Update()
+    private void Update()
     {
-        if (!_playerMover.IsMoving)
+        if (_playerMover.IsMoving) return;
+
+
+        if (Input.GetKeyDown(KeyCode.A))
+            _playerMover.Move(DirectionType.Left,1);
+
+        else if (Input.GetKeyDown(KeyCode.D))
+            _playerMover.Move(DirectionType.Right,1);
+
+        else if (_playerCollider.IsLadder)
         {
-            if (Input.GetKeyDown(KeyCode.W))
-                _playerMover.Move(DirectionType.Up);
+            Ladder ladder = _playerCollider.CurrentLadder;
 
-            else if (Input.GetKeyDown(KeyCode.S))
-                _playerMover.Move(DirectionType.Down);
+            if (Input.GetKeyDown(KeyCode.W) && CanMoveUp(ladder))
+                _playerMover.Move(DirectionType.Up,ladder.Step);
 
-            else if (Input.GetKeyDown(KeyCode.A))
-                _playerMover.Move(DirectionType.Left);
-
-            else if (Input.GetKeyDown(KeyCode.D))
-                _playerMover.Move(DirectionType.Right);
+            else if (Input.GetKeyDown(KeyCode.S) && CanMoveDown(ladder))
+                _playerMover.Move(DirectionType.Down,ladder.Step);
         }
+    }
+
+    private bool CanMoveUp(Ladder ladder)
+    {
+        return transform.position.y < ladder.transform.position.y;
+    }
+
+    private bool CanMoveDown(Ladder ladder)
+    {
+        return transform.position.y > ladder.transform.position.y;
     }
 }
