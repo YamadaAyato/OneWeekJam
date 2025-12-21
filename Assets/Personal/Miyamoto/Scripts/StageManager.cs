@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public int MoveCount => _moveCount;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private GameObject _player;
+    [SerializeField] private Transform _startPos;
+    [SerializeField] private int _moveCount;
+
+    private void Awake()
     {
         
     }
