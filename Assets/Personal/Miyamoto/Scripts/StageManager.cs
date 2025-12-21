@@ -13,7 +13,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Transform _startPos;
     [SerializeField] private int _moveCount;
     [SerializeField] private GameObject _stage;
-    [SerializeField] private PlayerMover Mover;
+    [SerializeField] private PlayerMover _mover;
     [SerializeField] private Queue<DirectionType> _commandQueue = new Queue<DirectionType>();
 
     private void Awake()
@@ -23,11 +23,11 @@ public class StageManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        Mover.OnMoveStarted += AddCommand;
+        _mover.OnMoveStarted += AddCommand;
     }
     private void OnDisable()
     {
-        Mover.OnMoveStarted -= AddCommand;
+        _mover.OnMoveStarted -= AddCommand;
     }
     /// <summary>
     /// 変数を初期化する
@@ -35,7 +35,7 @@ public class StageManager : MonoBehaviour
     private void Init()
     {
         _player = FindAnyObjectByType<PlayerInputController>().gameObject;
-        Mover = _player.GetComponent<PlayerMover>();
+        _mover = _player.GetComponent<PlayerMover>();
         //_startPos = GameObject.Find("Start").transform;
         //_moveCount = StageData.MoveCount;
         //_stage = StageData.Stage;
