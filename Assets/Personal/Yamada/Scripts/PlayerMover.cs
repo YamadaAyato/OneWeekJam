@@ -13,12 +13,24 @@ public class PlayerMover : MonoBehaviour
     /// <summary>
     ///         今動いているかのプロパティ
     /// </summary>
-    public bool IsMoving => _isMoving;
+    public bool IsMoving => _moveCoroutine != null;
 
     [SerializeField] private float _moveDistance;
     [SerializeField] private float _moveTime;
 
-    private bool _isMoving;
+    private Coroutine _moveCoroutine;
+
+    /// <summary>
+    ///         Move処理を強制終了
+    /// </summary>
+    public void ForceStop()
+    {
+        if (_moveCoroutine != null)
+        {
+            StopCoroutine(_moveCoroutine);
+            _moveCoroutine = null;
+        }
+    }
 
     /// <summary>
     ///         プレイヤー移動
@@ -26,11 +38,11 @@ public class PlayerMover : MonoBehaviour
     /// <param name="dir"></param>
     public void Move(DirectionType dir, int step)
     {
-        if (_isMoving) return;
+        if (_moveCoroutine != null) return;
 
         // 移動開始通知
         OnMoveStarted?.Invoke(dir);
-        StartCoroutine(MoveRoutine(dir, step));
+        _moveCoroutine = StartCoroutine(MoveRoutine(dir, step));
     }
 
     /// <summary>
@@ -40,8 +52,6 @@ public class PlayerMover : MonoBehaviour
     /// <returns></returns>
     private IEnumerator MoveRoutine(DirectionType dir, int step)
     {
-        _isMoving = true;
-
         Vector2 direction = DirectionToVector(dir);
 
         // 初期位置とターゲットとなる場所を計算
@@ -58,7 +68,7 @@ public class PlayerMover : MonoBehaviour
         }
 
         transform.position = targetPos;
-        _isMoving = false;
+        _moveCoroutine = null;
 
         // 移動完了通知
         OnMoveFinished?.Invoke();
