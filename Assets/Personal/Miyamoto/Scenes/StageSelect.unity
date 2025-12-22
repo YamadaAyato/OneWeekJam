@@ -946,6 +946,88 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268622994}
   m_CullTransparentMesh: 1
+--- !u!1 &1291705063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1291705065}
+  - component: {fileID: 1291705064}
+  m_Layer: 0
+  m_Name: StageSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1291705064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291705063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5fd71cec88631a4fa2a6ada24cec956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageSelector
+  _stageInfo:
+  - CurrentStageOutLine: {fileID: 892699793}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 1
+  - CurrentStageOutLine: {fileID: 177262253}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 2
+  - CurrentStageOutLine: {fileID: 1982687569}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 3
+  - CurrentStageOutLine: {fileID: 106717835}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 4
+  - CurrentStageOutLine: {fileID: 550762809}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 5
+  - CurrentStageOutLine: {fileID: 1095213259}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 6
+  - CurrentStageOutLine: {fileID: 2039558665}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 7
+  - CurrentStageOutLine: {fileID: 1268622996}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 8
+  - CurrentStageOutLine: {fileID: 1884431588}
+    StagePrefab: {fileID: 0}
+    MoveCount: 0
+    Index: 9
+  _stageCount: 9
+--- !u!4 &1291705065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291705063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884431586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,3 +1308,4 @@ SceneRoots:
   - {fileID: 831687820}
   - {fileID: 741514147}
   - {fileID: 316939096}
+  - {fileID: 1291705065}
