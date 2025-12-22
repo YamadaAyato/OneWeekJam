@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -9,8 +10,18 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private PlayerCollider _playerCollider;
 
+    private StageManager _stadeManager;
+
+    private void Start()
+    {
+        _stadeManager = FindAnyObjectByType<StageManager>();
+    }
+
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z) && _stadeManager != null)
+            _stadeManager.ResetStage();
+
         if (_playerMover.IsMoving) return;
         if (!_playerCollider.IsGrounded) return;
 
