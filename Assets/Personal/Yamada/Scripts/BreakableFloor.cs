@@ -10,7 +10,6 @@ public class BreakableFloor : MonoBehaviour
     [SerializeField] private int _maxPassCount;
     [SerializeField] private float _destroyTime;
 
-    private int _currentPassCount;
     private Rigidbody2D _rb;
     private BoxCollider2D _boxCollider;
 
@@ -38,10 +37,10 @@ public class BreakableFloor : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")
             || collision.gameObject.CompareTag("Enemy"))
         {
-            _currentPassCount++;
-            Debug.Log($"壊れる床を通過 {_currentPassCount} / {_maxPassCount}");
+            _maxPassCount--;
+            Debug.Log($"壊れる床を通過 後{_maxPassCount}回");
 
-            if (_currentPassCount >= _maxPassCount)
+            if (_maxPassCount <= 0)
                 Break();
         }
     }
