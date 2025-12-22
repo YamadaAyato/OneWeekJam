@@ -9,29 +9,32 @@ public class PlayerInputController : MonoBehaviour
 {
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private PlayerCollider _playerCollider;
-
-    private StageManager _stadeManager;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private void Start()
     {
-        _stadeManager = FindAnyObjectByType<StageManager>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && _stadeManager != null)
-            _stadeManager.ResetStage();
+        if (Input.GetKeyDown(KeyCode.Z))
+            ResetEvent.RaiseStageReset();
 
         if (_playerMover.IsMoving) return;
         if (!_playerCollider.IsGrounded) return;
 
 
         if (Input.GetKeyDown(KeyCode.A))
+        {
             _playerMover.Move(DirectionType.Left, 1);
-
+            _spriteRenderer.flipY = true;
+        }
         else if (Input.GetKeyDown(KeyCode.D))
+        {
             _playerMover.Move(DirectionType.Right, 1);
-
+            _spriteRenderer.flipY = false;
+        }
         else if (_playerCollider.IsLadder)
         {
             Ladder ladder = _playerCollider.CurrentLadder;
