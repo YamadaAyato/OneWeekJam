@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StageSelector : MonoBehaviour
 {
@@ -23,6 +22,9 @@ public class StageSelector : MonoBehaviour
             ChangeStage(1);
         else if (Input.GetKeyDown(KeyCode.E))
             ChangeStage(-1);
+        else if (Input.GetKeyDown(KeyCode.Space))
+            EnterStage(_currentIndex);
+                
     }
     /// <summary>
     /// 次のステージに移動する
@@ -76,7 +78,7 @@ public class StageSelector : MonoBehaviour
     /// </summary>
     /// <param name="value"></param>
     /// <summary>
-    /// ステージ表示を更新する
+    /// ステージの表示を更新する
     /// </summary>
     private void UpdateStageDisplay()
     {
@@ -107,5 +109,14 @@ public class StageSelector : MonoBehaviour
     {
         // ページ切り替え時の処理(アニメーションなど)をここに実装
         Debug.Log($"ページ遷移: direction={value}");
+    }
+    /// <summary>
+    /// ステージに入る
+    /// </summary>
+    /// <param name="index"></param>
+    private void EnterStage(int index)
+    {
+        StageDataManager.GetStageInfo(_stageDic[index].MoveCount, _stageDic[index].StagePrefab);
+        //SceneLoader(Stage);
     }
 }
