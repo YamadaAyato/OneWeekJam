@@ -15,7 +15,7 @@ public class BreakableFloor : MonoBehaviour
     private BoxCollider2D _boxCollider;
 
     /// <summary>
-    ///         壊れる！
+    ///         床を落としながら破壊
     /// </summary>
     private void Break()
     {
