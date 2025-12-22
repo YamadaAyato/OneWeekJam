@@ -12,5 +12,6 @@ public static class StageDataManager
     {
         MoveCount = moveCount;
         Stage = stage;
+        Debug.Log($"ステージの情報を追加{stage.name}");
     }
 }
