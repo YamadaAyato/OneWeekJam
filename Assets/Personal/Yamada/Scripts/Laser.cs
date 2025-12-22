@@ -14,7 +14,7 @@ public class Laser : MonoBehaviour
     private StageManager _stageManager;
     private SpriteRenderer _spriteRenderer;
     private PlayerMover _playerMover;
-    private Collider2D _collider;
+    private BoxCollider2D _collider;
 
     /// <summary>
     ///         変更の適用
@@ -50,7 +50,7 @@ public class Laser : MonoBehaviour
         _stageManager = FindAnyObjectByType<StageManager>();
         _playerMover = FindAnyObjectByType<PlayerMover>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _collider = GetComponent<Collider2D>();
+        _collider = GetComponent<BoxCollider2D>();
         _currentIsBooting = _isBooting;
 
         ApplyState();
