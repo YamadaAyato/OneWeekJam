@@ -772,7 +772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693ee6c47a43f174eba6e496b09fe692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableFloor
-  _maxPassCount: 20
+  _maxPassCount: 2
   _destroyTime: 2
 --- !u!61 &603498601
 BoxCollider2D:
@@ -4248,6 +4248,10 @@ PrefabInstance:
       propertyPath: _startPos
       value: 
       objectReference: {fileID: 334644186}
+    - target: {fileID: 7118127980267912840, guid: 500ddce082f512b43bdf28d67710a6dd, type: 3}
+      propertyPath: _doppelganger
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7601043530638801215, guid: 500ddce082f512b43bdf28d67710a6dd, type: 3}
       propertyPath: m_Name
       value: StageManager
