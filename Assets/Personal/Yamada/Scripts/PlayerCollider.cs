@@ -41,6 +41,11 @@ public class PlayerCollider : MonoBehaviour
             _isLadder = true;
             _currentLadder = collision.gameObject.GetComponent<Ladder>();
         }
+
+        if (collision.gameObject.CompareTag("DeathObject"))
+        {
+            ResetEvent.RaiseStageReset();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
