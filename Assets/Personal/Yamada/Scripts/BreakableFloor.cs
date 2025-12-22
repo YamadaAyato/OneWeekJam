@@ -1,8 +1,48 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+/// <summary>
+///         プレイヤーや敵が通過すると壊れる床のクラス
+/// </summary>
+[RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class BreakableFloor : MonoBehaviour
 {
+    [SerializeField] private int _maxPassCount;
+    [SerializeField] private float _destroyTime;
 
+    private int _currentPassCount;
+    private Rigidbody2D _rb;
+    private BoxCollider2D _boxCollider;
+
+    /// <summary>
+    ///         壊れる！
+    /// </summary>
+    private void Break()
+    {
+        // 落ちて消えていくように設定、一定時間たつと破壊
+        _rb.bodyType = RigidbodyType2D.Dynamic;
+        _boxCollider.enabled = false;
+        Destroy(this.gameObject, _destroyTime);
+    }
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody2D>();
+        _boxCollider = GetComponent<BoxCollider2D>();
+        // 通常は動かないように
+        _rb.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")
+            || collision.gameObject.CompareTag("Enemy"))
+        {
+            _currentPassCount++;
+            Debug.Log($"壊れる床を通過 {_currentPassCount} / {_maxPassCount}");
+
+            if (_currentPassCount >= _maxPassCount)
+                Break();
+        }
+    }
 }
