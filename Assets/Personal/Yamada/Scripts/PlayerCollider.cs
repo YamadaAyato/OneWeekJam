@@ -27,7 +27,8 @@ public class PlayerCollider : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("DeathObject"))
+        if (collision.gameObject.CompareTag("DeathObject")
+            || collision.gameObject.CompareTag("Enemy"))
         {
             ResetEvent.RaiseStageReset();
         }
