@@ -75,6 +75,7 @@ public class StageManager : MonoBehaviour
         Debug.Log("ステージリセット");
         Reset?.Invoke();
         _commandQueue.Clear();
+        _mover.ForceStop();
         _player.transform.position = _startPos.position;
     }
 }
