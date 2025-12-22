@@ -5,13 +5,17 @@ public class StageSelector : MonoBehaviour
 {
     [SerializeField] private List<StageData> _stageInfo;
     [SerializeField] private int _stageCount;
-    private Dictionary<int, StageData> _stageDic;
+    private Dictionary<int, StageData> _stageDic = new Dictionary<int, StageData>();
     private int _currentIndex = 0;
 
     private void Awake()
     {
         foreach (var stage in _stageInfo)
         {
+            if (stage == null)
+            {
+                Debug.Log($"ステージの情報がないよ");
+            }
             _stageDic.Add(stage.Index, stage);
         }
         _currentIndex = 1;
@@ -21,11 +25,10 @@ public class StageSelector : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
             ChangeStage(1);
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.A))
             ChangeStage(-1);
         else if (Input.GetKeyDown(KeyCode.Space))
-            EnterStage(_currentIndex);
-                
+            EnterStage(_currentIndex); 
     }
     /// <summary>
     /// 次のステージに移動する
