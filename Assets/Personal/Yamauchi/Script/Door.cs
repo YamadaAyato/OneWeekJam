@@ -5,9 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [Header("テレポートする座標")]
-    [SerializeField] private Vector2 _teleportPosition;
-    [Header("DoorButton")]
-    [SerializeField] private DoorButton _doorButton;
+    [SerializeField] private GameObject _teleportGameObject;
 
     /// <summary>
     /// 入ってきたオブジェクトのtagがplayerなら、テレポートさせる
@@ -16,11 +14,19 @@ public class Door : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && _doorButton.isDoorOpen)
+        if (collision.gameObject.CompareTag("Player") && Open(true))
         {
             GameObject player = collision.gameObject;
-            player.transform.position = _teleportPosition;
-            _doorButton.isDoorOpen = false;
+            player.transform.position = _teleportGameObject.transform.position;
+            Open(false);
         }
+    }
+
+    public bool Open(bool open)
+    {
+        if (!open)
+            return false;
+
+        return true;
     }
 }

@@ -4,10 +4,8 @@ using UnityEngine;
 /// </summary>
 public class DoorButton : MonoBehaviour
 {
-    /// <summary>
-    /// ドアが開いているか開いてないかの判定
-    /// </summary>
-    public bool isDoorOpen = false;
+    [Header("Door")]
+    [SerializeField] private Door _door;
 
     /// <summary>
     /// ボタンを押したらドアが開く
@@ -15,9 +13,9 @@ public class DoorButton : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            isDoorOpen = true;
+            _door.Open(true);
         }
     }
 }
