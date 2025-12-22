@@ -25,6 +25,14 @@ public class PlayerCollider : MonoBehaviour
     private bool _isGrouded;
     private Ladder _currentLadder;
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("DeathObject"))
+        {
+            ResetEvent.RaiseStageReset();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ladder"))
