@@ -4,6 +4,7 @@ using UnityEngine;
 public class StageSelector : MonoBehaviour
 {
     [SerializeField] private List<StageData> _stageInfo;
+    [SerializeField] private int _stageCount;
     private Dictionary<int, StageData> _stageDic;
     private int _currentIndex = 0;
 
@@ -41,8 +42,8 @@ public class StageSelector : MonoBehaviour
         }
 
         // ページ境界のチェック
-        int currentPage = (_currentIndex - 1) / 9;
-        int nextPage = (nextIndex - 1) / 9;
+        int currentPage = (_currentIndex - 1) / _stageCount;
+        int nextPage = (nextIndex - 1) / _stageCount;
 
         // ページが変わる場合
         if (currentPage != nextPage)
@@ -51,12 +52,12 @@ public class StageSelector : MonoBehaviour
             if (value > 0)
             {
                 // 次のページの最初のステージ
-                nextIndex = nextPage * 9 + 1;
+                nextIndex = nextPage * _stageCount + 1;
             }
             else
             {
                 // 前のページの最後のステージ
-                nextIndex = currentPage * 9;
+                nextIndex = currentPage * _stageCount;
             }
 
             ChangePage(value);
