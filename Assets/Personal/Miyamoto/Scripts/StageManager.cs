@@ -30,10 +30,12 @@ public class StageManager : MonoBehaviour
     private void OnEnable()
     {
         _mover.OnMoveStarted += AddCommand;
+        ResetEvent.OnStageReset += ResetStage;
     }
     private void OnDisable()
     {
         _mover.OnMoveStarted -= AddCommand;
+        ResetEvent.OnStageReset -= ResetStage;
     }
     /// <summary>
     /// 変数を初期化する
@@ -70,6 +72,7 @@ public class StageManager : MonoBehaviour
     /// </summary>
     public void ResetStage()
     {
+        Debug.Log("ステージリセット");
         Reset?.Invoke();
         _commandQueue.Clear();
         _player.transform.position = _startPos.position;
