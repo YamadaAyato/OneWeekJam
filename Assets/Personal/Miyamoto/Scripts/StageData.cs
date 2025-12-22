@@ -1,16 +1,17 @@
 using UnityEngine;
-/// <summary>
-/// 選んだステージの情報を取得するクラス
-/// </summary>
-public static class StageData
+using UnityEngine.UI;
+[System.Serializable]
+public class StageData
 {
-    /// <summary>行動回数</summary>
-    public static int MoveCount;
-    /// <summary>ステージプレファブ</summary>
-    public static GameObject Stage;
-    public static void GetStageInfo(int moveCount, GameObject stage)
-    {
-        MoveCount = moveCount;
-        Stage = stage;
-    }
+    [Tooltip("該当するステージのアウトラインをアサインして")]
+    public Outline CurrentStageOutLine;
+
+    [Header("インゲームの情報")]
+
+    [Tooltip("ステージのプレファブ")]
+    public GameObject StagePrefab;
+    [Tooltip("プレイヤーの行動回数")]
+    public int MoveCount;
+    [Tooltip("ステージの番号"), Min(1)]
+    public int Index;
 }
