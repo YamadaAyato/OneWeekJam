@@ -4,8 +4,8 @@ using UnityEngine;
 /// </summary>
 public class DoorButton : MonoBehaviour
 {
-    [Header("Door")]
-    [SerializeField] private Door _door;
+    [Header("DoorManager")]
+    [SerializeField] private DoorManager _doorManager;
 
     /// <summary>
     /// ボタンを押したらドアが開く
@@ -15,7 +15,7 @@ public class DoorButton : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _door.Open(true);
+            _doorManager.CallOpen();
         }
     }
 }
