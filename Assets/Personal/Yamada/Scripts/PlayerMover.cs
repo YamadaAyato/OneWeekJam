@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 ///         プレイヤーの移動クラス
 /// </summary>
-public class PlayerMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour,IActor
 {
     public event Action<DirectionType> OnMoveStarted;
     public event Action OnMoveFinished;
@@ -72,6 +72,15 @@ public class PlayerMover : MonoBehaviour
 
         // 移動完了通知
         OnMoveFinished?.Invoke();
+    }
+    /// <summary>
+    ///         ギミック（テレポートなど）によって
+    ///         強制的に位置変更される際に呼ばれる処理。
+    ///         ドッペルゲンガーと共通のインターフェースとして実装している。
+    /// </summary>
+    public void OnTeleport()
+    {
+        ForceStop();
     }
 
     /// <summary>
