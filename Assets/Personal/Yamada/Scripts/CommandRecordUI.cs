@@ -1,9 +1,10 @@
-using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using TMPro;
 using System.Linq;
+using UnityEngine;
 
+/// <summary>
+///         記録ターンのコマンドをUI表示するクラス
+/// </summary>
 public class CommandRecordUI : MonoBehaviour
 {
     //[SerializeField, Tooltip("カウント表示のテキスト")] private TMP_Text _countText;
@@ -15,6 +16,9 @@ public class CommandRecordUI : MonoBehaviour
     private StageManager _stageManager;
     private int _curretIndex;
 
+    /// <summary>
+    ///         方向を取得してUIに設定
+    /// </summary>
     private void CommandRecord()
     {
         UpdateCount();
@@ -27,6 +31,10 @@ public class CommandRecordUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    ///         向きなどが入っていないスロット群を作成する
+    /// </summary>
+    /// <param name="count"></param>
     private void CreateSlots(int count)
     {
         ClearSlots();
@@ -42,6 +50,9 @@ public class CommandRecordUI : MonoBehaviour
         _curretIndex = 0;
     }
 
+    /// <summary>
+    ///         スロットをListから消去する
+    /// </summary>
     private void ClearSlots()
     {
         foreach (var oneSlot in _uiSlots)
@@ -50,17 +61,27 @@ public class CommandRecordUI : MonoBehaviour
         _uiSlots.Clear();
     }
 
+    /// <summary>
+    ///         UIのリセット
+    /// </summary>
     private void ResetUI()
     {
         CreateSlots(_stageManager.MoveCount);
         UpdateCount();
     }
 
+    /// <summary>
+    ///         MoveCountをテキストで表示
+    /// </summary>
     private void UpdateCount()
     {
         // _countText.text = _stageManager.MoveCount.ToString();
     }
 
+    /// <summary>
+    ///         現状の最終命令の取得して返す
+    /// </summary>
+    /// <returns>Directionを返す</returns>
     private DirectionType GetLastCommand()
     {
         DirectionType last = _stageManager.CommandQueue.ElementAt(_stageManager.CommandQueue.Count - 1);
