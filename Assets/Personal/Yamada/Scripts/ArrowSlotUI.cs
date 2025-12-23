@@ -1,0 +1,48 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+///         向きを表すスロットの演出や向きの設定をするクラス
+/// </summary>
+public class ArrowSlotUI : MonoBehaviour
+{
+    [SerializeField, Tooltip("このオブジェクトのイメージコンポーネント")] private Image _image;
+    [SerializeField, Tooltip("指示がない状態の空の画像")] private Sprite _emptyCommndImage;
+    private Vector3 _defaultScale;
+
+     /// <summary>
+     ///        向きとイメージをリセットする
+     /// </summary>
+    public void ResetArrow()
+    {
+        transform.localScale = _defaultScale;
+        _image.sprite = _emptyCommndImage;
+        _image.rectTransform.rotation = Quaternion.identity;
+    }
+
+    /// <summary>
+    ///         UI一つに画像と向きを設定
+    /// </summary>
+    /// <param name="sprite"></param>
+    /// <param name="rotationZ"></param>
+    public void SetUI(Sprite sprite,float rotationZ)
+    {
+        _image.sprite = sprite;
+        _image.rectTransform.rotation = Quaternion.Euler(0, 0, rotationZ);
+
+        PlayUIEffect();
+    }
+
+    /// <summary>
+    ///         コマンドが入った時に演出を再生
+    /// </summary>
+    private void PlayUIEffect()
+    {
+        // 演出再生、多分DOTween
+    }
+
+    private void Awake()
+    {
+        _defaultScale = this.transform.localScale;
+    }
+}
