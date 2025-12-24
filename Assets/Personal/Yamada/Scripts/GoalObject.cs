@@ -6,14 +6,15 @@ using UnityEngine;
 public class GoalObject : MonoBehaviour
 {
     [SerializeField] private string _sceneName;
-
-    /// <summary>
+    [SerializeField] private int _stageId;
+    /// <summary> 
     ///         ゴール時の演出等をするクラス
     /// </summary>
     private void Goal()
     {
         // 演出追加予定らしい、シークエンスの最後にシーン遷移してもいいかも
         SceneLoader.LoadScene(_sceneName);
+        StageProgressManager.SetStageCleared(_stageId);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
