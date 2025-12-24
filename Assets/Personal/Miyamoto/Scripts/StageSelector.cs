@@ -18,7 +18,7 @@ public class StageSelector : MonoBehaviour
 
     private void Awake()
     {
-        var outlines = _stageCanvas.GetComponentsInChildren<Outline>(true);
+        var outlines = _stageCanvas.GetComponentsInChildren<Outline>();
         for (int i = 0; i < _stageInfo.Count; i++)
         {
             _stageInfo[i].GetStageID(i + 1);
