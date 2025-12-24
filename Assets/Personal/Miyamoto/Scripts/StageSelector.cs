@@ -11,6 +11,7 @@ public class StageSelector : MonoBehaviour
     [SerializeField] private Ease _stageAnimEase;
     [SerializeField] private float _stageAnimMaxSize;
     [SerializeField] private float _stageAnimDuration;
+    [SerializeField] private Color _stageLockedColor;
     private Dictionary<int, StageData> _stageDic = new Dictionary<int, StageData>();
     private int _currentIndex = 0;
     private Tween _stageTween;
@@ -25,14 +26,25 @@ public class StageSelector : MonoBehaviour
             _stageInfo[i].GetStageID(i + 1);
             _stageInfo[i].SetSelectStage(outlines[i].gameObject);
         }
-        //ステージのリストを辞書に変換
+
         foreach (var stage in _stageInfo)
         {
+            //ステージのリストを辞書に変換
             if (stage == null)
             {
                 Debug.Log($"ステージの情報がないよ");
             }
             _stageDic.Add(stage.StageId, stage);
+
+            //ステージがクリアされていなかったらロックする
+            if (!StageProgressManager.IsStageCleared(stage.StageId))
+            {
+                Stagelocked(stage);
+            }
+            else
+            {
+                stage.SetCleared();
+            }
         }
     }
     private void Start()
@@ -149,9 +161,9 @@ public class StageSelector : MonoBehaviour
             Debug.Log($"現在のステージ: {_currentIndex}");
         }
     }
-    private void Stagelocked()
+    private void Stagelocked(StageData stageData)
     {
-
+        stageData.SelectStage.GetComponent<Image>().color = _stageLockedColor;
     }
     /// <summary>
     ///　ページの遷移
