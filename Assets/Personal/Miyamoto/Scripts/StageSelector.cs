@@ -26,25 +26,34 @@ public class StageSelector : MonoBehaviour
             _stageInfo[i].GetStageID(i + 1);
             _stageInfo[i].SetSelectStage(outlines[i].gameObject);
         }
+        //ステージのクリア判定を確認する
+        for (int i = 0; i < _stageInfo.Count; i++)
+        {
+            if (i == 0)
+            {
+                //最初のステージは進めるように
+                _stageInfo[0].CanEnterTheStage();
+                continue;
+            }
 
+            //クリアされてい無かったら色を変えて移動できないようにする
+            if (!StageProgressManager.IsStageCleared(_stageInfo[i - 1].StageId))
+            {
+                Stagelocked(_stageInfo[i]);
+            }
+            else
+            {
+                _stageInfo[i].CanEnterTheStage();
+            }
+        }
+        //ステージのリストを辞書に変換
         foreach (var stage in _stageInfo)
         {
-            //ステージのリストを辞書に変換
             if (stage == null)
             {
                 Debug.Log($"ステージの情報がないよ");
             }
             _stageDic.Add(stage.StageId, stage);
-
-            //ステージがクリアされていなかったらロックする
-            if (!StageProgressManager.IsStageCleared(stage.StageId))
-            {
-                Stagelocked(stage);
-            }
-            else
-            {
-                stage.SetCleared();
-            }
         }
     }
     private void Start()
