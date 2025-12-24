@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class StageProgressManager : MonoBehaviour
+public static class StageProgressManager
 {
     private const string CLEAR_KEY = "STAGE_CLEAR";
     /// <summary>
