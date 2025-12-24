@@ -5,8 +5,10 @@ public class StageData
 {
     public int StageId => _stageId;
 
-    [Tooltip("該当するステージのアウトラインをアサインして")]
-    public Outline CurrentStageOutLine;
+    [Tooltip("該当するステージ")]
+    public GameObject SelectStage => _selectStage;
+    [ReadOnly, SerializeField]
+    private GameObject _selectStage;
 
     [Header("インゲームの情報")]
 
@@ -18,5 +20,6 @@ public class StageData
     [ReadOnly, SerializeField]
     private int _stageId;
 
-    public int GetStageID(int value) => _stageId = value;
+    public void SetSelectStage(GameObject stage) => _selectStage = stage;
+    public void GetStageID(int value) => _stageId = value;
 }

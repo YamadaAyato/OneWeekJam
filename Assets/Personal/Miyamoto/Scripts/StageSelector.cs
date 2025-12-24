@@ -1,18 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageSelector : MonoBehaviour
 {
     [SerializeField] private List<StageData> _stageInfo;
+    [SerializeField] private Canvas _stageCanvas;
     [SerializeField] private int _stageCount;
     private Dictionary<int, StageData> _stageDic = new Dictionary<int, StageData>();
     private int _currentIndex = 0;
-
+    private GameObject[] _stages;
     private void Awake()
     {
+        var outlines = _stageCanvas.GetComponentsInChildren<Outline>(true);
         for (int i = 0; i < _stageInfo.Count; i++)
         {
             _stageInfo[i].GetStageID(i + 1);
+            _stageInfo[i].SetSelectStage(outlines[i].gameObject);
         }
         foreach (var stage in _stageInfo)
         {
@@ -36,7 +40,7 @@ public class StageSelector : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
             ChangeStage(1);
         else if (Input.GetKeyDown(KeyCode.Space))
-            EnterStage(_currentIndex); 
+            EnterStage(_currentIndex);
     }
     /// <summary>
     /// 次のステージに移動する
@@ -97,18 +101,18 @@ public class StageSelector : MonoBehaviour
         // 全てのステージのアウトラインを消す
         foreach (var s in _stageInfo)
         {
-            if (s.CurrentStageOutLine != null)
+            if (s.SelectStage != null)
             {
-                s.CurrentStageOutLine.enabled = false;
+                s.SelectStage.GetComponent<Outline>().enabled = false;
             }
         }
 
         // 現在のステージのアウトラインだけ有効にする
         if (_stageDic.TryGetValue(_currentIndex, out var stage))
         {
-            if (stage.CurrentStageOutLine != null)
+            if (stage.SelectStage.GetComponent<Outline>() != null)
             {
-                stage.CurrentStageOutLine.enabled = true;
+                stage.SelectStage.GetComponent<Outline>().enabled = true;
             }
             Debug.Log($"現在のステージ: {_currentIndex}");
         }
