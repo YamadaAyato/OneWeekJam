@@ -976,43 +976,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageSelector
   _stageInfo:
-  - CurrentStageOutLine: {fileID: 892699793}
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 1
-  - CurrentStageOutLine: {fileID: 177262253}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 2
-  - CurrentStageOutLine: {fileID: 1982687569}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 3
-  - CurrentStageOutLine: {fileID: 106717835}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 4
-  - CurrentStageOutLine: {fileID: 550762809}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 5
-  - CurrentStageOutLine: {fileID: 1095213259}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 6
-  - CurrentStageOutLine: {fileID: 2039558665}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 7
-  - CurrentStageOutLine: {fileID: 1268622996}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 8
-  - CurrentStageOutLine: {fileID: 1884431588}
+    _isGoal: 0
+    _stageId: 0
+  - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    Index: 9
+    _isGoal: 0
+    _stageId: 0
+  _stageCanvas: {fileID: 741514146}
   _stageCount: 9
+  _stageAnimEase: 1
+  _stageAnimMaxSize: 1.2
+  _stageAnimDuration: 0.5
 --- !u!4 &1291705065
 Transform:
   m_ObjectHideFlags: 0
