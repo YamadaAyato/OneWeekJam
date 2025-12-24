@@ -10,8 +10,9 @@ public static class StageDataManager
     public static int MoveCount;
     /// <summary>ステージプレファブ</summary>
     public static GameObject Stage;
-    public static void GetStageInfo(int moveCount, GameObject stage)
+    public static void GetStageInfo(int stageId,int moveCount, GameObject stage)
     {
+        StageId = stageId;
         MoveCount = moveCount;
         Stage = stage;
         Debug.Log($"ステージの情報を追加{stage.name}");
