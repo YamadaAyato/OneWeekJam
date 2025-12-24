@@ -9,10 +9,8 @@ public class Door : MonoBehaviour
     [SerializeField] private GameObject _teleportGameObject;
     [Header("DoorManager")]
     [SerializeField] private DoorManager _doorManager;
-
-    /// <summary>
-    /// ドアが開いているか閉じているかを示す
-    /// </summary>
+    [Header("ドアの初期状態")]
+    [SerializeField]
     private bool _isOpen = default;
 
     /// <summary>
@@ -22,14 +20,20 @@ public class Door : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && _isOpen)
-        {
-            _teleportGameObject.GetComponent<Collider2D>().enabled = false;
-            GameObject player = collision.gameObject;
-            player.transform.position = _teleportGameObject.transform.position;
-            _doorManager.CallClose();
-            Invoke("RessurectionCollider", 1.5f);
-        }
+        Debug.Log(collision);
+        if (!_isOpen) return;
+
+        if (!collision.TryGetComponent<IActor>(out var teleportable))
+            return;
+
+        _teleportGameObject.GetComponent<Collider2D>().enabled = false;
+
+        teleportable.OnTeleport();
+
+        collision.transform.position = _teleportGameObject.transform.position;
+
+        _doorManager.CallClose();
+        Invoke(nameof(RessurectionCollider), 1.5f);
     }
 
     /// <summary>
