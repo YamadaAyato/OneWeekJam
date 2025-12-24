@@ -14,7 +14,7 @@ public class GoalObject : MonoBehaviour
     {
         // 演出追加予定らしい、シークエンスの最後にシーン遷移してもいいかも
         SceneLoader.LoadScene(_sceneName);
-        StageProgressManager.SetStageCleared(_stageId);
+        StageProgressManager.SetStageCleared(StageDataManager.StageId);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
