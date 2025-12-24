@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +18,7 @@ public class StageSelector : MonoBehaviour
 
     private void Awake()
     {
-        //Canvas直下のOutLineコンポーネントがついているオブジェクトを全取得
+        //Canvas直下のOutLineコンポーネントがついているオブジェクトを全取得して変数に格納
         var outlines = _stageCanvas.GetComponentsInChildren<Outline>();
         for (int i = 0; i < _stageInfo.Count; i++)
         {
@@ -148,6 +148,10 @@ public class StageSelector : MonoBehaviour
             }
             Debug.Log($"現在のステージ: {_currentIndex}");
         }
+    }
+    private void Stagelocked()
+    {
+
     }
     /// <summary>
     ///　ページの遷移
