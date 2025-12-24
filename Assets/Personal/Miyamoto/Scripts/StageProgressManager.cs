@@ -12,4 +12,8 @@ public static class StageProgressManager : MonoBehaviour
         PlayerPrefs.SetInt(CLEAR_KEY + stageId, 1);
         PlayerPrefs.Save();
     }
+    public bool IsStageCleared(int stageId)
+    {
+
+    }
 }
