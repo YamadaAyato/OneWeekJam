@@ -7,7 +7,7 @@ public static class StageProgressManager : MonoBehaviour
     ///クリア情報をセーブする
     /// </summary>
     /// <param name="stageId"></param>
-    public void SetStageCleared(int stageId)
+    public static void SetStageCleared(int stageId)
     {
         PlayerPrefs.SetInt(CLEAR_KEY + stageId, 1);
         PlayerPrefs.Save();
@@ -17,7 +17,7 @@ public static class StageProgressManager : MonoBehaviour
     /// </summary>
     /// <param name="stageId"></param>
     /// <returns></returns>
-    public bool IsStageCleared(int stageId)
+    public static bool IsStageCleared(int stageId)
     {
         return PlayerPrefs.GetInt(CLEAR_KEY + stageId, 0) == 1;
     }
