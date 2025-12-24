@@ -18,12 +18,14 @@ public class StageSelector : MonoBehaviour
 
     private void Awake()
     {
+        //Canvas直下のOutLineコンポーネントがついているオブジェクトを全取得
         var outlines = _stageCanvas.GetComponentsInChildren<Outline>();
         for (int i = 0; i < _stageInfo.Count; i++)
         {
             _stageInfo[i].GetStageID(i + 1);
             _stageInfo[i].SetSelectStage(outlines[i].gameObject);
         }
+        //ステージのリストを辞書に変換
         foreach (var stage in _stageInfo)
         {
             if (stage == null)
@@ -31,15 +33,13 @@ public class StageSelector : MonoBehaviour
                 Debug.Log($"ステージの情報がないよ");
             }
             _stageDic.Add(stage.StageId, stage);
-            stage
         }
-        _currentIndex = 1;
-        UpdateStageDisplay();
-        PlayStageAnim(_stageDic[_currentIndex].SelectStage.transform);
     }
     private void Start()
     {
-        
+        _currentIndex = 1;
+        UpdateStageDisplay();
+        PlayStageAnim(_stageDic[_currentIndex].SelectStage.transform);
     }
     private void Update()
     {
