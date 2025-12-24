@@ -5,6 +5,16 @@ using UnityEngine;
 /// </summary>
 public class DoppelgangerColider : MonoBehaviour
 {
+    /// <summary>
+    ///         梯子上にいるか
+    /// </summary>
+    public bool IsLadder => _isLadder;
+
+    /// <summary>
+    ///         現在位置している梯子を返す
+    /// </summary>
+    public Ladder CurrentLadder => _currentLadder;
+
     private bool _isLadder;
     private Ladder _currentLadder;
 
