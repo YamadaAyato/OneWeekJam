@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class StageProgressManager : MonoBehaviour
 {
-    private const string CLEAR_KEY = "STAGE_CLEAR"
+    private const string CLEAR_KEY = "STAGE_CLEAR";
     /// <summary>
     ///クリア情報をセーブする
     /// </summary>
