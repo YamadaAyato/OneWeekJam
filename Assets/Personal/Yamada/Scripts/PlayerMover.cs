@@ -5,97 +5,26 @@ using UnityEngine;
 /// <summary>
 ///         プレイヤーの移動クラス
 /// </summary>
-public class PlayerMover : MonoBehaviour,IActor
+public class PlayerMover : CharacterMoverBase
 {
     public event Action<DirectionType> OnMoveStarted;
     public event Action OnMoveFinished;
 
     /// <summary>
-    ///         今動いているかのプロパティ
-    /// </summary>
-    public bool IsMoving => _moveCoroutine != null;
-
-    [SerializeField] private float _moveDistance;
-    [SerializeField] private float _moveTime;
-
-    private Coroutine _moveCoroutine;
-
-    /// <summary>
-    ///         Move処理を強制終了
-    /// </summary>
-    public void ForceStop()
-    {
-        if (_moveCoroutine != null)
-        {
-            StopCoroutine(_moveCoroutine);
-            _moveCoroutine = null;
-        }
-    }
-
-    /// <summary>
-    ///         プレイヤー移動
+    ///         プレイヤー移動開始！
     /// </summary>
     /// <param name="dir"></param>
+    /// <param name="step"></param>
     public void Move(DirectionType dir, int step)
     {
-        if (_moveCoroutine != null) return;
+        if (IsMoving) return;
 
-        // 移動開始通知
         OnMoveStarted?.Invoke(dir);
-        _moveCoroutine = StartCoroutine(MoveRoutine(dir, step));
+        StartMove(dir, step);
     }
 
-    /// <summary>
-    ///         移動コルーチン
-    /// </summary>
-    /// <param name="dir"></param>
-    /// <returns></returns>
-    private IEnumerator MoveRoutine(DirectionType dir, int step)
+    protected override void HandleMoveFinished()
     {
-        Vector2 direction = DirectionToVector(dir);
-
-        // 初期位置とターゲットとなる場所を計算
-        Vector3 startPos = transform.position;
-        Vector3 targetPos = startPos + (Vector3)(direction.normalized * _moveDistance * step);
-
-        // 位置を補間して滑らかに移動
-        float t = 0f;
-        while (t < 1f)
-        {
-            t += Time.deltaTime / _moveTime;
-            transform.position = Vector3.Lerp(startPos, targetPos, t);
-            yield return null;
-        }
-
-        transform.position = targetPos;
-        _moveCoroutine = null;
-
-        // 移動完了通知
         OnMoveFinished?.Invoke();
-    }
-    /// <summary>
-    ///         ギミック（テレポートなど）によって
-    ///         強制的に位置変更される際に呼ばれる処理。
-    ///         ドッペルゲンガーと共通のインターフェースとして実装している。
-    /// </summary>
-    public void OnTeleport()
-    {
-        ForceStop();
-    }
-
-    /// <summary>
-    ///         方向のenumからvector2に変換
-    /// </summary>
-    /// <param name="dir"></param>
-    /// <returns></returns>
-    private Vector2 DirectionToVector(DirectionType dir)
-    {
-        return dir switch
-        {
-            DirectionType.Up => Vector2.up,
-            DirectionType.Down => Vector2.down,
-            DirectionType.Left => Vector2.left,
-            DirectionType.Right => Vector2.right
-        };
     }
 }
