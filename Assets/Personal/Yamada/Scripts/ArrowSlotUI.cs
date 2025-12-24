@@ -13,6 +13,8 @@ public class ArrowSlotUI : MonoBehaviour
     [Header("演出系")]
     [SerializeField] private float _effectScale;
     [SerializeField] private float _effectDuration;
+    [SerializeField, Tooltip("揺れの回数")] private int _effectVibrato;
+    [SerializeField, Range(0, 1), Tooltip("反発係数")] private float _effectElasticity;
 
     private Tween _tween;
     private Vector3 _defaultScale;
@@ -47,10 +49,13 @@ public class ArrowSlotUI : MonoBehaviour
     {
         _tween?.Kill();
 
-        // 第三引数は揺れの回数　第四引数は戻り係数を表す
+        // 第三引数は揺れの回数　第四引数は反発係数を表す
         // 第四引数は1に近いとばねみたいな挙動になる
+        // 今後色色のエフェクト入れるかも
         _tween = DOTween.Sequence()
-            .Append(transform.DOPunchScale(Vector3.one * _effectScale, _effectDuration, 8, 0.8f));
+            .Append(transform.DOPunchScale(
+                Vector3.one * _effectScale, _effectDuration,
+                _effectVibrato, _effectElasticity));
     }
 
     private void Awake()
