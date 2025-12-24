@@ -7,6 +7,6 @@ public static class PlayerPrefsEditor
     {
         PlayerPrefs.DeleteAll();
         PlayerPrefs.Save();
-        Debug.Log("ステージの情報を全部リセット");
+        Debug.Log("<color=red>ステージの情報を全部リセット</color>");
     }
 }
