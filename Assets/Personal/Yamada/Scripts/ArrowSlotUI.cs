@@ -47,7 +47,6 @@ public class ArrowSlotUI : MonoBehaviour
     {
         _tween?.Kill();
 
-        // 演出再生、多分DOTween
         _tween = DOTween.Sequence()
             .Append(transform.DOPunchScale(Vector3.one * _effectScale, _effectDuration, 8, 0.8f));
     }
