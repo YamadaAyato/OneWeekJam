@@ -51,7 +51,7 @@ public class ArrowSlotUI : MonoBehaviour
 
         // 第三引数は揺れの回数　第四引数は反発係数を表す
         // 第四引数は1に近いとばねみたいな挙動になる
-        // 今後色色のエフェクト入れるかも
+        // 今後色のエフェクト入れるかも
         _tween = DOTween.Sequence()
             .Append(transform.DOPunchScale(
                 Vector3.one * _effectScale, _effectDuration,
