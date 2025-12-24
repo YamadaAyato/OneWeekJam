@@ -24,5 +24,5 @@ public class StageData
 
     public void SetSelectStage(GameObject stage) => _selectStage = stage;
     public void GetStageID(int value) => _stageId = value;
-    public void SetCleared(bool cleared) => _isCleared = cleared;
+    public void SetCleared() => _isCleared = true;
 }
