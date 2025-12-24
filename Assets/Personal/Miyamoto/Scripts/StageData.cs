@@ -16,7 +16,7 @@ public class StageData
     [Tooltip("プレイヤーの行動回数")]
     public int MoveCount;
     [Tooltip("ゴールしたかどうかの判定")]
-    public bool _isGoal;
+    private bool _isGoal;
     [Tooltip("ステージの番号")]
     [ReadOnly, SerializeField]
     private int _stageId;
