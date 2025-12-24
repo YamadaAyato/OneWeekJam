@@ -1,16 +1,5 @@
-using UnityEngine;
-
-public class PlayerPrefsEditor : MonoBehaviour
+using UnityEditor;
+public static class PlayerPrefsEditor
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
