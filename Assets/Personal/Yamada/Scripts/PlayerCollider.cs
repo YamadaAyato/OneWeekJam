@@ -1,6 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+///         プレイヤーのコライダーを管理するクラス
+/// </summary>
 public class PlayerCollider : MonoBehaviour
 {
     /// <summary>
