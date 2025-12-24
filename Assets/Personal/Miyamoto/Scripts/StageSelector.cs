@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +11,7 @@ public class StageSelector : MonoBehaviour
     [SerializeField] private Ease _stageAnimEase;
     [SerializeField] private float _stageAnimMaxSize;
     [SerializeField] private float _stageAnimDuration;
+    [SerializeField] private Color _stageLockedColor;
     private Dictionary<int, StageData> _stageDic = new Dictionary<int, StageData>();
     private int _currentIndex = 0;
     private Tween _stageTween;
@@ -18,12 +19,34 @@ public class StageSelector : MonoBehaviour
 
     private void Awake()
     {
+        //Canvas直下のOutLineコンポーネントがついているオブジェクトを全取得して変数に格納
         var outlines = _stageCanvas.GetComponentsInChildren<Outline>();
         for (int i = 0; i < _stageInfo.Count; i++)
         {
             _stageInfo[i].GetStageID(i + 1);
             _stageInfo[i].SetSelectStage(outlines[i].gameObject);
         }
+        //ステージのクリア判定を確認する
+        for (int i = 0; i < _stageInfo.Count; i++)
+        {
+            if (i == 0)
+            {
+                //最初のステージは進めるように
+                _stageInfo[0].CanEnterTheStage();
+                continue;
+            }
+
+            //クリアされてい無かったら色を変えて移動できないようにする
+            if (!StageProgressManager.IsStageCleared(_stageInfo[i - 1].StageId))
+            {
+                Stagelocked(_stageInfo[i]);
+            }
+            else
+            {
+                _stageInfo[i].CanEnterTheStage();
+            }
+        }
+        //ステージのリストを辞書に変換
         foreach (var stage in _stageInfo)
         {
             if (stage == null)
@@ -32,6 +55,9 @@ public class StageSelector : MonoBehaviour
             }
             _stageDic.Add(stage.StageId, stage);
         }
+    }
+    private void Start()
+    {
         _currentIndex = 1;
         UpdateStageDisplay();
         PlayStageAnim(_stageDic[_currentIndex].SelectStage.transform);
@@ -93,6 +119,8 @@ public class StageSelector : MonoBehaviour
 
         if (nextIndex <= 0)
             return;
+        if (!_stageDic[nextIndex].IsCleared)
+            return;
 
         // ページ境界チェック
         int currentPage = (_currentIndex - 1) / _stageCount;
@@ -144,6 +172,10 @@ public class StageSelector : MonoBehaviour
             Debug.Log($"現在のステージ: {_currentIndex}");
         }
     }
+    private void Stagelocked(StageData stageData)
+    {
+        stageData.SelectStage.GetComponent<Image>().color = _stageLockedColor;
+    }
     /// <summary>
     ///　ページの遷移
     /// </summary>
@@ -159,7 +191,16 @@ public class StageSelector : MonoBehaviour
     /// <param name="index"></param>
     private void EnterStage(int index)
     {
-        StageDataManager.GetStageInfo(_stageDic[index].MoveCount, _stageDic[index].StagePrefab);
-        //SceneLoader(Stage);
+        StageDataManager.GetStageInfo(index, _stageDic[index].MoveCount, _stageDic[index].StagePrefab);
+        SceneLoader.LoadScene("Stage");
+    }
+    /// <summary>
+    /// クリア情報を全削除
+    /// </summary>
+    [ContextMenu("クリア情報を全削除")]
+    private void DeleteStageClearData()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 }
