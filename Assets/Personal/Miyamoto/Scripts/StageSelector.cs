@@ -160,6 +160,6 @@ public class StageSelector : MonoBehaviour
     private void EnterStage(int index)
     {
         StageDataManager.GetStageInfo(_stageDic[index].MoveCount, _stageDic[index].StagePrefab);
-        //SceneLoader(Stage);
+        SceneLoader.LoadScene("Stage");
     }
 }
