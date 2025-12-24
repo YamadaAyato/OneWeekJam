@@ -979,53 +979,45 @@ MonoBehaviour:
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 0}
     MoveCount: 0
-    _isGoal: 0
     _stageId: 0
   _stageCanvas: {fileID: 741514146}
   _stageCount: 9
   _stageAnimEase: 1
   _stageAnimMaxSize: 1.2
   _stageAnimDuration: 0.5
+  _stageLockedColor: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 1}
 --- !u!4 &1291705065
 Transform:
   m_ObjectHideFlags: 0
