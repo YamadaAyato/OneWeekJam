@@ -10,23 +10,31 @@ public class StageSelector : MonoBehaviour
 
     private void Awake()
     {
+        for (int i = 0; i < _stageInfo.Count; i++)
+        {
+            _stageInfo[i].GetStageID(i + 1);
+        }
         foreach (var stage in _stageInfo)
         {
             if (stage == null)
             {
                 Debug.Log($"ステージの情報がないよ");
             }
-            _stageDic.Add(stage.Index, stage);
+            _stageDic.Add(stage.StageId, stage);
         }
         _currentIndex = 1;
         UpdateStageDisplay();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-            ChangeStage(1);
+        if (Input.GetKeyDown(KeyCode.W))
+            ChangeStage(-3);
         else if (Input.GetKeyDown(KeyCode.A))
             ChangeStage(-1);
+        else if (Input.GetKeyDown(KeyCode.S))
+            ChangeStage(3);
+        else if (Input.GetKeyDown(KeyCode.D))
+            ChangeStage(1);
         else if (Input.GetKeyDown(KeyCode.Space))
             EnterStage(_currentIndex); 
     }
