@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693ee6c47a43f174eba6e496b09fe692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableFloor
-  _maxPassCount: 2
+  _maxPassCount: 100
   _destroyTime: 2
 --- !u!61 &603498601
 BoxCollider2D:
