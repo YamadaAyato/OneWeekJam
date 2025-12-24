@@ -194,13 +194,4 @@ public class StageSelector : MonoBehaviour
         StageDataManager.GetStageInfo(index, _stageDic[index].MoveCount, _stageDic[index].StagePrefab);
         SceneLoader.LoadScene("Stage");
     }
-    /// <summary>
-    /// クリア情報を全削除
-    /// </summary>
-    [ContextMenu("クリア情報を全削除")]
-    private void DeleteStageClearData()
-    {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
-    }
 }
