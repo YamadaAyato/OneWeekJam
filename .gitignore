@@ -99,3 +99,7 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 Assets/AssetStoreTools
+Assets/Plugins/Demigiant.meta
+Assets/Plugins/Demigiant
+Assets/Resources/DOTweenSettings.asset.meta
+Assets/Resources/DOTweenSettings.asset
