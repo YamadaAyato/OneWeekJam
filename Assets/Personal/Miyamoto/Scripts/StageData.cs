@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 [System.Serializable]
 public class StageData
 {
@@ -16,6 +15,8 @@ public class StageData
     public GameObject StagePrefab;
     [Tooltip("プレイヤーの行動回数")]
     public int MoveCount;
+    [Tooltip("ゴールしたかどうかの判定")]
+    public bool _isGoal;
     [Tooltip("ステージの番号")]
     [ReadOnly, SerializeField]
     private int _stageId;
