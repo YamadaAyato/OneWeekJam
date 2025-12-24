@@ -1,16 +1,99 @@
+using System.Collections;
 using UnityEngine;
 
-public class CharacterMoverBase : MonoBehaviour
+/// <summary>
+///         Moverの基底クラス
+/// </summary>
+public abstract class CharacterMoverBase : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    /// <summary>
+    ///         今動いているかのプロパティ
+    /// </summary>
+    public bool IsMoving => _moveCoroutine != null;
+
+    [SerializeField] protected float _moveDistance;
+    [SerializeField] protected float _moveTime;
+
+    protected Coroutine _moveCoroutine;
+
+    /// <summary>
+    ///         ギミック（テレポートなど）によって
+    ///         強制的に位置変更される際に呼ばれる処理
+    /// </summary>
+    public virtual void HandleTeleport()
     {
-        
+        ForceStop();
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    ///         Move処理を強制終了
+    /// </summary>
+    public void ForceStop()
     {
-        
+        if (_moveCoroutine != null)
+        {
+            StopCoroutine(_moveCoroutine);
+            _moveCoroutine = null;
+        }
+    }
+
+    /// <summary>
+    ///         キャラクター移動
+    /// </summary>
+    /// <param name="dir"></param>
+    protected virtual void StartMove(DirectionType dir, int step)
+    {
+        if (_moveCoroutine != null) return;
+
+        _moveCoroutine = StartCoroutine(MoveRoutine(dir, step));
+    }
+
+    /// <summary>
+    ///         移動コルーチン
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <returns></returns>
+    protected virtual IEnumerator MoveRoutine(DirectionType dir, int step)
+    {
+        Vector2 direction = DirectionToVector(dir);
+
+        // 初期位置とターゲットとなる場所を計算
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = startPos + (Vector3)(direction.normalized * _moveDistance * step);
+
+        // 位置を補間して滑らかに移動
+        float t = 0f;
+        while (t < 1f)
+        {
+            t += Time.deltaTime / _moveTime;
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+            yield return null;
+        }
+
+        transform.position = targetPos;
+        _moveCoroutine = null;
+
+        HandleMoveFinished();
+    }
+
+    /// <summary>
+    ///         移動完了メソッド（プレイヤーのイベント用）
+    /// </summary>
+    protected virtual void HandleMoveFinished() { }
+
+    /// <summary>
+    ///         方向のenumからvector2に変換
+    /// </summary>
+    /// <param name="dir"></param>
+    /// <returns></returns>
+    protected virtual Vector2 DirectionToVector(DirectionType dir)
+    {
+        return dir switch
+        {
+            DirectionType.Up => Vector2.up,
+            DirectionType.Down => Vector2.down,
+            DirectionType.Left => Vector2.left,
+            DirectionType.Right => Vector2.right
+        };
     }
 }
