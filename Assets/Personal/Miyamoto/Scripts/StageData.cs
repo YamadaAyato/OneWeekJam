@@ -1,10 +1,13 @@
 using UnityEngine;
-using UnityEngine.UI;
 [System.Serializable]
 public class StageData
 {
-    [Tooltip("該当するステージのアウトラインをアサインして")]
-    public Outline CurrentStageOutLine;
+    public int StageId => _stageId;
+
+    [Tooltip("該当するステージ")]
+    public GameObject SelectStage => _selectStage;
+    [ReadOnly, SerializeField]
+    private GameObject _selectStage;
 
     [Header("インゲームの情報")]
 
@@ -12,6 +15,12 @@ public class StageData
     public GameObject StagePrefab;
     [Tooltip("プレイヤーの行動回数")]
     public int MoveCount;
-    [Tooltip("ステージの番号"), Min(1)]
-    public int Index;
+    [Tooltip("ゴールしたかどうかの判定")]
+    public bool _isGoal;
+    [Tooltip("ステージの番号")]
+    [ReadOnly, SerializeField]
+    private int _stageId;
+
+    public void SetSelectStage(GameObject stage) => _selectStage = stage;
+    public void GetStageID(int value) => _stageId = value;
 }
