@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 142733428316978604}
   - component: {fileID: 869831566892270334}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Doppelganger
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
