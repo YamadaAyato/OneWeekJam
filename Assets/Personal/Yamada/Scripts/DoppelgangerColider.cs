@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+///         ドッペルゲンガーのコライダーを管理するクラス
+/// </summary>
 public class DoppelgangerColider : MonoBehaviour
 {
     private bool _isLadder;
