@@ -31,10 +31,15 @@ public class StageSelector : MonoBehaviour
                 Debug.Log($"ステージの情報がないよ");
             }
             _stageDic.Add(stage.StageId, stage);
+            stage
         }
         _currentIndex = 1;
         UpdateStageDisplay();
         PlayStageAnim(_stageDic[_currentIndex].SelectStage.transform);
+    }
+    private void Start()
+    {
+        
     }
     private void Update()
     {
