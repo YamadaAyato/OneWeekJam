@@ -47,6 +47,8 @@ public class ArrowSlotUI : MonoBehaviour
     {
         _tween?.Kill();
 
+        // 第三引数は揺れの回数　第四引数は戻り係数を表す
+        // 第四引数は1に近いとばねみたいな挙動になる
         _tween = DOTween.Sequence()
             .Append(transform.DOPunchScale(Vector3.one * _effectScale, _effectDuration, 8, 0.8f));
     }
