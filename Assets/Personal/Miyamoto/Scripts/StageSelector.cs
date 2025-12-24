@@ -110,6 +110,8 @@ public class StageSelector : MonoBehaviour
 
         if (nextIndex <= 0)
             return;
+        if (!_stageDic[nextIndex].IsCleared)
+            return;
 
         // ページ境界チェック
         int currentPage = (_currentIndex - 1) / _stageCount;
