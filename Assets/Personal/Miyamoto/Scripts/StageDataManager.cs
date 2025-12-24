@@ -4,6 +4,7 @@ using UnityEngine;
 /// </summary>
 public static class StageDataManager
 {
+    public static int StageId;
     /// <summary>行動回数</summary>
     public static int MoveCount;
     /// <summary>ステージプレファブ</summary>
