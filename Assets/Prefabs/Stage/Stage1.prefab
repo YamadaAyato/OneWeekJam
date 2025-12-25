@@ -464,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7989050436354954252}
   m_Layer: 6
-  m_Name: StartPos
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
