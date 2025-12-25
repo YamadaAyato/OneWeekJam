@@ -40,7 +40,7 @@ public class CommandRecordUI : MonoBehaviour
         ClearSlots();
 
         // 指示がない状態の画像を生成
-        for (int i = 0; i < _stageManager.MoveCount; i++)
+        for (int i = 0; i < count; i++)
         {
             var oneSlot = Instantiate(_slotPrefab, _parentObject);
             oneSlot.ResetArrow();
@@ -104,15 +104,17 @@ public class CommandRecordUI : MonoBehaviour
         };
     }
 
-    private void Awake()
+    private void Start()
     {
-        _stageManager = FindAnyObjectByType<StageManager>();
+        if (_stageManager == null)
+            _stageManager = FindAnyObjectByType<StageManager>();
 
         CreateSlots(_stageManager.MoveCount);
     }
 
     private void OnEnable()
     {
+        _stageManager = FindAnyObjectByType<StageManager>();
         _stageManager.Move += CommandRecord;
         _stageManager.Reset += ResetUI;
     }
