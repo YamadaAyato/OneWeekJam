@@ -82,11 +82,11 @@ public class StageManager : MonoBehaviour
     public void ResetStage()
     {
         Debug.Log("ステージリセット");
+        _moveCount = StageDataManager.MoveCount;
+        _isSpawn = false;
         Reset?.Invoke();
         _commandQueue.Clear();
         _mover.ForceStop();
         _player.transform.position = _startPos.position;
-        _moveCount = StageDataManager.MoveCount;
-        _isSpawn = false;
     }
 }
