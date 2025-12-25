@@ -92,3 +92,5 @@ MonoBehaviour:
   _emptyCommndImage: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   _effectScale: 0.5
   _effectDuration: 1
+  _effectVibrato: 8
+  _effectElasticity: 0.834
