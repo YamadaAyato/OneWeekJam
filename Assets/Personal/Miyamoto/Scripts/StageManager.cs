@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.WSA;
 
 /// <summary>
 /// 全体の行動のマネージャークラス
@@ -14,19 +13,18 @@ public class StageManager : MonoBehaviour
     public event Action Reset;
     public event Action Move;
     [SerializeField] private GameObject _player;
-    [ReadOnly, SerializeField] private GameObject _doppelganger;
+    [SerializeField] private GameObject _doppelganger;
+
+    [ReadOnly, SerializeField] private Queue<DirectionType> _commandQueue = new Queue<DirectionType>();
+    [ReadOnly, SerializeField] private PlayerMover _mover;
     [ReadOnly, SerializeField] private Transform _startPos;
     [ReadOnly, SerializeField] private int _moveCount;
     [ReadOnly, SerializeField] private GameObject _stage;
-    [ReadOnly, SerializeField] private PlayerMover _mover;
-    [ReadOnly, SerializeField] private Queue<DirectionType> _commandQueue = new Queue<DirectionType>();
     private bool _isSpawn;
 
     private void Awake()
     {
         Init();
-        Instantiate(_player, _startPos.position, Quaternion.identity);
-        Instantiate(_stage);
     }
     private void OnEnable()
     {
@@ -43,10 +41,12 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        _mover = _player.GetComponent<PlayerMover>();
-        _startPos = GameObject.Find("Start").transform;
-        _moveCount = StageDataManager.MoveCount;
         _stage = StageDataManager.Stage;
+        Instantiate(_stage);
+        _startPos = GameObject.Find("Start").transform;
+        Instantiate(_player, _startPos.position, Quaternion.identity);
+        _mover = _player.GetComponent<PlayerMover>();
+        _moveCount = StageDataManager.MoveCount;
     }
     /// <summary>
     /// コマンドQueueに引数で与えられものを追加する
