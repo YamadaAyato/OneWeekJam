@@ -13,7 +13,7 @@ public class StageManager : MonoBehaviour
 
     public event Action Reset;
     public event Action Move;
-    [ReadOnly, SerializeField] private GameObject _player;
+    [SerializeField] private GameObject _player;
     [ReadOnly, SerializeField] private GameObject _doppelganger;
     [ReadOnly, SerializeField] private Transform _startPos;
     [ReadOnly, SerializeField] private int _moveCount;
@@ -26,6 +26,7 @@ public class StageManager : MonoBehaviour
     {
         Init();
         Instantiate(_player, _startPos.position, Quaternion.identity);
+        Instantiate(_stage);
     }
     private void OnEnable()
     {
@@ -42,7 +43,6 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        _player = FindAnyObjectByType<PlayerInputController>().gameObject;
         _mover = _player.GetComponent<PlayerMover>();
         _startPos = GameObject.Find("Start").transform;
         _moveCount = StageDataManager.MoveCount;
