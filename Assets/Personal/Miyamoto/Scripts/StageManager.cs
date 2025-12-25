@@ -13,19 +13,19 @@ public class StageManager : MonoBehaviour
 
     public event Action Reset;
     public event Action Move;
-    [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject _doppelganger;
-    [SerializeField] private Transform _startPos;
-    [SerializeField] private int _moveCount;
-    [SerializeField] private GameObject _stage;
-    [SerializeField] private PlayerMover _mover;
-    [SerializeField] private Queue<DirectionType> _commandQueue = new Queue<DirectionType>();
+    [ReadOnly, SerializeField] private GameObject _player;
+    [ReadOnly, SerializeField] private GameObject _doppelganger;
+    [ReadOnly, SerializeField] private Transform _startPos;
+    [ReadOnly, SerializeField] private int _moveCount;
+    [ReadOnly, SerializeField] private GameObject _stage;
+    [ReadOnly, SerializeField] private PlayerMover _mover;
+    [ReadOnly, SerializeField] private Queue<DirectionType> _commandQueue = new Queue<DirectionType>();
     private bool _isSpawn;
 
     private void Awake()
     {
         Init();
-        //Instantiate(_player, _startPos.position, Quaternion.identity);
+        Instantiate(_player, _startPos.position, Quaternion.identity);
     }
     private void OnEnable()
     {
@@ -44,9 +44,9 @@ public class StageManager : MonoBehaviour
     {
         _player = FindAnyObjectByType<PlayerInputController>().gameObject;
         _mover = _player.GetComponent<PlayerMover>();
-        //_startPos = GameObject.Find("Start").transform;
-        //_moveCount = StageData.MoveCount;
-        //_stage = StageData.Stage;
+        _startPos = GameObject.Find("Start").transform;
+        _moveCount = StageDataManager.MoveCount;
+        _stage = StageDataManager.Stage;
     }
     /// <summary>
     /// コマンドQueueに引数で与えられものを追加する
