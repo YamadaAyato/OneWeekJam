@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
         _stage = StageDataManager.Stage;
         Instantiate(_stage);
         _startPos = GameObject.Find("Start").transform;
-        Instantiate(_player, _startPos.position, Quaternion.identity);
+        _player = Instantiate(_player, _startPos.position, Quaternion.identity);
         _mover = _player.GetComponent<PlayerMover>();
         _moveCount = StageDataManager.MoveCount;
     }
@@ -58,8 +58,9 @@ public class StageManager : MonoBehaviour
         {
             Instantiate(_doppelganger, _startPos.position, Quaternion.identity);
             _isSpawn = true;
+            Debug.Log("ドッペルゲンガー生成");
         }
-        else if(_moveCount > 0)
+        else if (_moveCount > 0)
         {
             _commandQueue.Enqueue(type);
             _moveCount--;
