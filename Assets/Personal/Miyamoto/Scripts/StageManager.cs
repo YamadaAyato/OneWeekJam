@@ -29,11 +29,13 @@ public class StageManager : MonoBehaviour
     private void OnEnable()
     {
         _mover.OnMoveStarted += AddCommand;
+        _mover.OnMoveFinished += FinishCommand;
         ResetEvent.OnStageReset += ResetStage;
     }
     private void OnDisable()
     {
         _mover.OnMoveStarted -= AddCommand;
+        _mover.OnMoveFinished -= FinishCommand;
         ResetEvent.OnStageReset -= ResetStage;
     }
     /// <summary>
@@ -54,19 +56,25 @@ public class StageManager : MonoBehaviour
     /// <param name="type"></param>
     private void AddCommand(DirectionType type)
     {
-        if (_moveCount <= 0 && !_isSpawn)
-        {
-            Instantiate(_doppelganger, _startPos.position, Quaternion.identity);
-            _isSpawn = true;
-            Debug.Log("ドッペルゲンガー生成");
-        }
-        else if (_moveCount > 0)
+        if (_moveCount > 0)
         {
             _commandQueue.Enqueue(type);
             _moveCount--;
             Debug.Log($"<color=lime>{type}</color> : をQueueに格納");
         }
         Move?.Invoke();
+    }
+    /// <summary>
+    ///         命令終了時に呼ばれる
+    /// </summary>
+    private void FinishCommand()
+    {
+        if (_moveCount <= 0 && !_isSpawn)
+        {
+            Instantiate(_doppelganger, _startPos.position, Quaternion.identity);
+            _isSpawn = true;
+            Debug.Log("ドッペルゲンガー生成");
+        }
     }
     /// <summary>
     /// リセットが呼ばれたときに呼ぶ
@@ -78,5 +86,7 @@ public class StageManager : MonoBehaviour
         _commandQueue.Clear();
         _mover.ForceStop();
         _player.transform.position = _startPos.position;
+        _moveCount = StageDataManager.MoveCount;
+        _isSpawn = false;
     }
 }
