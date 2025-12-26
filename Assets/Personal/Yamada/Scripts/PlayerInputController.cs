@@ -28,12 +28,12 @@ public class PlayerInputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             _playerMover.Move(DirectionType.Left, 1);
-            _spriteRenderer.flipY = true;
+            _spriteRenderer.flipX = true;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             _playerMover.Move(DirectionType.Right, 1);
-            _spriteRenderer.flipY = false;
+            _spriteRenderer.flipX = false;
         }
         else if (_playerCollider.IsLadder)
         {
