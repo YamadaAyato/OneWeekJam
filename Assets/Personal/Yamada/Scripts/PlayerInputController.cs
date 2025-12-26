@@ -9,12 +9,6 @@ public class PlayerInputController : MonoBehaviour
 {
     [SerializeField] private PlayerMover _playerMover;
     [SerializeField] private PlayerCollider _playerCollider;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-
-    private void Start()
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
 
     private void Update()
     {
@@ -28,12 +22,10 @@ public class PlayerInputController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             _playerMover.Move(DirectionType.Left, 1);
-            _spriteRenderer.flipX = true;
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             _playerMover.Move(DirectionType.Right, 1);
-            _spriteRenderer.flipX = false;
         }
         else if (_playerCollider.IsLadder)
         {
