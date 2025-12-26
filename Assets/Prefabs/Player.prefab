@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMover
   _moveDistance: 1.6
-  _moveTime: 0.2
+  _moveTime: 1
 --- !u!114 &4851856067003691020
 MonoBehaviour:
   m_ObjectHideFlags: 0
