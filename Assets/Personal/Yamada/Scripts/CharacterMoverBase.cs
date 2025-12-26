@@ -14,7 +14,9 @@ public abstract class CharacterMoverBase : MonoBehaviour
     [SerializeField] protected float _moveDistance;
     [SerializeField] protected float _moveTime;
 
+    protected Animator _animator;
     protected Coroutine _moveCoroutine;
+    protected SpriteRenderer _spriteRenderer;
 
     /// <summary>
     ///         ギミック（テレポートなど）によって
@@ -34,6 +36,11 @@ public abstract class CharacterMoverBase : MonoBehaviour
         {
             StopCoroutine(_moveCoroutine);
             _moveCoroutine = null;
+        }
+
+        if (_animator != null)
+        {
+            _animator.SetBool("IsLadder", false);
         }
     }
 
@@ -55,6 +62,13 @@ public abstract class CharacterMoverBase : MonoBehaviour
     /// <returns></returns>
     protected virtual IEnumerator MoveRoutine(DirectionType dir, int step)
     {
+        if (dir == DirectionType.Up || dir == DirectionType.Down)
+            _animator.SetBool("IsLadder", true);
+        else if (dir == DirectionType.Left)
+            _spriteRenderer.flipX = true;
+        else if (dir == DirectionType.Right)
+            _spriteRenderer.flipX = false;
+
         Vector2 direction = DirectionToVector(dir);
 
         // 初期位置とターゲットとなる場所を計算
@@ -72,6 +86,8 @@ public abstract class CharacterMoverBase : MonoBehaviour
 
         transform.position = targetPos;
         _moveCoroutine = null;
+
+        _animator.SetBool("IsLadder", false);
 
         HandleMoveFinished();
     }
@@ -95,5 +111,11 @@ public abstract class CharacterMoverBase : MonoBehaviour
             DirectionType.Left => Vector2.left,
             DirectionType.Right => Vector2.right
         };
+    }
+
+    protected virtual void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
     }
 }

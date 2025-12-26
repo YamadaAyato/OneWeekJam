@@ -43,8 +43,9 @@ public class Doppelganger : CharacterMoverBase
         Destroy(gameObject);
     }
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _stageManager = GameObject.FindAnyObjectByType<StageManager>();
         _dopCol = GetComponent<DoppelgangerColider>();
         _moveQueue = GameObject.FindAnyObjectByType<StageManager>().CommandQueue;
