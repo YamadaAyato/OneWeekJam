@@ -11,6 +11,7 @@ public class Laser : MonoBehaviour
     [SerializeField] private bool _isBooting;
 
     private bool _currentIsBooting;
+    private Animator _animator;
     private StageManager _stageManager;
     private SpriteRenderer _spriteRenderer;
     private PlayerMover _playerMover;
@@ -23,7 +24,7 @@ public class Laser : MonoBehaviour
     {
         //  一旦OnOffでやってる、透明度いじって見やすくしたりでもいいかも
         _collider.enabled = _currentIsBooting;
-        _spriteRenderer.enabled = _currentIsBooting;
+        _animator.SetBool("IsOn", _currentIsBooting);
     }
 
     /// <summary>
@@ -31,6 +32,7 @@ public class Laser : MonoBehaviour
     /// </summary>
     private void SwichLazerBoot()
     {
+        Debug.Log("Laser SwichLazerBoot 呼ばれた");
         _currentIsBooting = !_currentIsBooting;
         ApplyState();
     }
@@ -51,8 +53,12 @@ public class Laser : MonoBehaviour
         _playerMover = FindAnyObjectByType<PlayerMover>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<BoxCollider2D>();
+        _animator = GetComponent<Animator>();
         _currentIsBooting = _isBooting;
+    }
 
+    private void Start()
+    {
         ApplyState();
     }
 
