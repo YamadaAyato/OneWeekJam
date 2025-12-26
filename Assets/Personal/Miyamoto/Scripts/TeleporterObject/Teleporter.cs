@@ -3,6 +3,7 @@ using UnityEngine;
 public class Teleporter : MonoBehaviour
 {
     [SerializeField]
+    [Tooltip("移動先のテレポーターオブジェクト")]
     private Teleporter _destination;
     private Animator _animator;
     private TeleporterSwitch _teleporterSwitch;
