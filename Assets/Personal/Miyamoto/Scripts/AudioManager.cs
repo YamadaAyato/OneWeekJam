@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,9 +11,11 @@ public class AudioManager : MonoBehaviour
     {
         public AudioClip Clip => _clip;
         public string Name => _name;
+        public float Volume => _volume;
 
         [SerializeField] private AudioClip _clip;
         [SerializeField] private string _name;
+        [SerializeField, Range(0, 1)] private float _volume;
     }
     [Header("プレイヤー")]
     [ReadOnly, SerializeField]private AudioSource _bgmPlayer;
@@ -41,7 +44,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="name"></param>
     /// <param name="volume"></param>
-    public void PlaySE(string name, float volume)
+    public void PlaySE(string name)
     {
         foreach (var se in _seList)
         {
@@ -51,8 +54,8 @@ public class AudioManager : MonoBehaviour
                 sePlayer.transform.SetParent(transform);
 
                 var source = sePlayer.AddComponent<AudioSource>();
+                source.volume = se.Volume;
                 source.spatialBlend = 0f;
-                source.volume = volume;
                 source.clip = se.Clip;
                 source.Play();
                 Destroy(sePlayer, se.Clip.length);
@@ -70,9 +73,25 @@ public class AudioManager : MonoBehaviour
             if (bgm.Name == name)
             {
                 _bgmPlayer.loop = true;
-                _bgmPlayer.clip = bgm.Clip;
+                _bgmPlayer.volume = bgm.Volume;
+                _bgmPlayer.resource = bgm.Clip;
                 _bgmPlayer.Play();
             }
         }
+    }
+    /// <summary>
+    /// 音楽のフェード
+    /// </summary>
+    /// <param name="fadeTime"></param>
+    public void FadeBGM(float fadeTime)
+    {
+        _bgmPlayer.DOFade(0f, fadeTime);
+    }
+    /// <summary>
+    /// BGMのストップ
+    /// </summary>
+    public void Stop()
+    {
+        _bgmPlayer.Stop();
     }
 }
