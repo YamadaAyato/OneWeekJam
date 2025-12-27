@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8916124772081440987}
   - component: {fileID: 6236961508834033321}
   - component: {fileID: 1401616149712795523}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OrangeFloorSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}

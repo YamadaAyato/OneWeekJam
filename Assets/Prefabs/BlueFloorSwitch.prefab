@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7902165457973985529}
   - component: {fileID: 6479380284344034154}
   - component: {fileID: 2946636879571022412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BlueFloorSwitch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
