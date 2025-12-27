@@ -482,11 +482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2291247163136933944, guid: 4832a671db669e44ea0ab0490ea758cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.78
+      value: 4.8
       objectReference: {fileID: 0}
     - target: {fileID: 2291247163136933944, guid: 4832a671db669e44ea0ab0490ea758cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2291247163136933944, guid: 4832a671db669e44ea0ab0490ea758cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -519,10 +519,6 @@ PrefabInstance:
     - target: {fileID: 2291247163136933944, guid: 4832a671db669e44ea0ab0490ea758cf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7008284188837181733, guid: 4832a671db669e44ea0ab0490ea758cf, type: 3}
-      propertyPath: _maxPassCount
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
