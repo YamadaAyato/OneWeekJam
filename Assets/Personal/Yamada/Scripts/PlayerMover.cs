@@ -38,11 +38,15 @@ public class PlayerMover : CharacterMoverBase
     /// </summary>
     private void SpawnEffect(DirectionType dir)
     {
-        WalkEffect walk = Instantiate(_walkEffect, transform.position + _walkOffset, Quaternion.identity);
-
         if (dir == DirectionType.Right)
+        {
+            WalkEffect walk = Instantiate(_walkEffect, transform.position + _walkOffset, Quaternion.identity);
             walk.SetFlip(false);
+        }
         else if (dir == DirectionType.Left)
+        {
+            WalkEffect walk = Instantiate(_walkEffect, transform.position + _walkOffset, Quaternion.identity);
             walk.SetFlip(true);
+        }
     }
 }
