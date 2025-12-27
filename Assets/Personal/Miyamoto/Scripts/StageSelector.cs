@@ -1,24 +1,32 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StageSelector : MonoBehaviour
 {
+    [Header("ステージ")]
     [SerializeField] private List<StageData> _stageInfo;
     [SerializeField] private Canvas _stageCanvas;
     [SerializeField] private int _stageCount;
+
+    [Header("アニメーション")]
     [SerializeField] private Ease _stageAnimEase;
     [SerializeField] private float _stageAnimMaxSize;
     [SerializeField] private float _stageAnimDuration;
     [SerializeField] private Color _stageLockedColor;
+
+    [SerializeField] private float _fadeTime;
+    [SerializeField] private Image _fadePanel;
     private Dictionary<int, StageData> _stageDic = new Dictionary<int, StageData>();
     private int _currentIndex = 0;
     private Tween _stageTween;
     private Transform _prevStage;
-
+    private Coroutine _enterStageCoroutine;
     private void Awake()
     {
+        _fadePanel.gameObject.SetActive(false);
         //Canvas直下のOutLineコンポーネントがついているオブジェクトを全取得して変数に格納
         var outlines = _stageCanvas.GetComponentsInChildren<Outline>();
         for (int i = 0; i < _stageInfo.Count; i++)
@@ -59,6 +67,7 @@ public class StageSelector : MonoBehaviour
     private void Start()
     {
         _currentIndex = 1;
+        AudioManager.Instance.PlayBGM("StageSelect");
         UpdateStageDisplay();
         PlayStageAnim(_stageDic[_currentIndex].SelectStage.transform);
     }
@@ -73,7 +82,14 @@ public class StageSelector : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D))
             ChangeStage(1);
         else if (Input.GetKeyDown(KeyCode.Space))
-            EnterStage(_currentIndex);
+        {
+            if (_enterStageCoroutine != null)
+            {
+                StopCoroutine(_enterStageCoroutine);
+                _enterStageCoroutine = null;
+            }
+            _enterStageCoroutine = StartCoroutine(EnterStages(_currentIndex));
+        }
     }
     /// <summary>
     /// ステージアニメーションを再生する
@@ -189,9 +205,14 @@ public class StageSelector : MonoBehaviour
     /// ステージに入る
     /// </summary>
     /// <param name="index"></param>
-    private void EnterStage(int index)
+    private IEnumerator EnterStages(int index)
     {
         StageDataManager.GetStageInfo(index, _stageDic[index].MoveCount, _stageDic[index].StagePrefab);
+        _fadePanel.gameObject.SetActive(true);
+        _fadePanel.DOFade(0f, _fadeTime).From(1f);
+        AudioManager.Instance.FadeBGM(_fadeTime);
+        yield return new WaitForSeconds(_fadeTime);
         SceneLoader.LoadScene("Stage");
+        _enterStageCoroutine = null;
     }
 }
