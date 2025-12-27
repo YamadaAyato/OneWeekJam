@@ -12,6 +12,7 @@ public class BreakableFloor : MonoBehaviour
 
     private Rigidbody2D _rb;
     private BoxCollider2D _boxCollider;
+    private Animator _animator;
     private Vector3 _startPos;
     private StageManager _stageManager;
     private int _currentPassCount;
@@ -29,6 +30,16 @@ public class BreakableFloor : MonoBehaviour
         _rb.bodyType = RigidbodyType2D.Kinematic;
         _boxCollider.enabled = true;
         this.transform.position = _startPos;
+
+        UpdateAnimation();
+    }
+
+    /// <summary>
+    ///         アニメーションの更新
+    /// </summary>
+    private void UpdateAnimation()
+    {
+        _animator.SetInteger("Count", _currentPassCount);
     }
 
     /// <summary>
@@ -36,8 +47,6 @@ public class BreakableFloor : MonoBehaviour
     /// </summary>
     private void Break()
     {
-        // 落ちて消えていくように設定、一定時間たつと破壊
-        _rb.bodyType = RigidbodyType2D.Dynamic;
         _boxCollider.enabled = false;
     }
 
@@ -46,11 +55,14 @@ public class BreakableFloor : MonoBehaviour
         _stageManager = FindAnyObjectByType<StageManager>();
         _rb = GetComponent<Rigidbody2D>();
         _boxCollider = GetComponent<BoxCollider2D>();
+        _animator = GetComponent<Animator>();
 
         // 通常は動かないように
         _rb.bodyType = RigidbodyType2D.Kinematic;
         _startPos = this.transform.position;
         _currentPassCount = _maxPassCount;
+
+        ResetFloor();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -60,6 +72,8 @@ public class BreakableFloor : MonoBehaviour
         {
             _currentPassCount--;
             Debug.Log($"壊れる床を通過 後{_currentPassCount}回");
+
+            UpdateAnimation();
 
             if (_currentPassCount <= 0)
                 Break();
