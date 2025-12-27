@@ -209,7 +209,7 @@ public class StageSelector : MonoBehaviour
     {
         StageDataManager.GetStageInfo(index, _stageDic[index].MoveCount, _stageDic[index].StagePrefab);
         _fadePanel.gameObject.SetActive(true);
-        _fadePanel.DOFade(0f, _fadeTime).From(1f);
+        _fadePanel.DOFade(1f, _fadeTime).From(0);
         AudioManager.Instance.FadeBGM(_fadeTime);
         yield return new WaitForSeconds(_fadeTime);
         SceneLoader.LoadScene("Stage");
