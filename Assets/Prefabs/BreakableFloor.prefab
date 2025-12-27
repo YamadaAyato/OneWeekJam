@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 330280317736829784}
   - component: {fileID: 4666683391647233115}
   - component: {fileID: 7008284188837181733}
+  - component: {fileID: 5950641168920151765}
   m_Layer: 6
   m_Name: BreakableFloor
   m_TagString: Untagged
@@ -178,5 +179,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693ee6c47a43f174eba6e496b09fe692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakableFloor
-  _maxPassCount: 3
+  _maxPassCount: 1
   _destroyTime: 2
+--- !u!95 &5950641168920151765
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604564172892915457}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a987ddc6a7139ff4b8bd1d7f802268da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
