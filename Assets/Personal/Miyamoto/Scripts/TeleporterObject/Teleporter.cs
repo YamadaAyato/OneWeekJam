@@ -16,10 +16,12 @@ public class Teleporter : MonoBehaviour
     private void OnEnable()
     {
         _teleporterSwitch.OnTeleported += ReSpwanTeleportor;
+        ResetEvent.OnStageReset += ReSpwanTeleportor;
     }
     private void OnDisable()
     {
         _teleporterSwitch.OnTeleported -= ReSpwanTeleportor;
+        ResetEvent.OnStageReset -= ReSpwanTeleportor;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,6 +41,7 @@ public class Teleporter : MonoBehaviour
     private void TeleportedProcces()
     {
         Debug.Log("てれぽーとしたときのしょり");
+        AudioManager.Instance.PlaySE("Tp");
         _animator.SetBool("Teleport", true);
         _destination._animator.SetBool("Teleport", true);
         _isActive = false;

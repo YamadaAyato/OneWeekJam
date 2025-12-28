@@ -25,6 +25,7 @@ public class FloorSwitch : MonoBehaviour
         {
             OnCharacterEnter?.Invoke();
             _animator.SetBool("Push", true);
+            AudioManager.Instance.PlaySE("Switch");
         }
     }
 
