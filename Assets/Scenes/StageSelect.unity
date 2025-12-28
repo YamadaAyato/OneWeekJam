@@ -1254,7 +1254,7 @@ MonoBehaviour:
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 1824104549080261629, guid: 103c2de4d1dc34b44a43b60fd21fdf9f, type: 3}
-    MoveCount: 5
+    MoveCount: 6
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 4591277377320189652, guid: ff1063e4cdc7dbb46a959e611d137bfc, type: 3}
