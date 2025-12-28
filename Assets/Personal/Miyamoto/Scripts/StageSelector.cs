@@ -132,7 +132,7 @@ public class StageSelector : MonoBehaviour
     private void ChangeStage(int value)
     {
         int nextIndex = _currentIndex + value;
-
+        AudioManager.Instance.PlaySE("Select");
         if (nextIndex <= 0)
             return;
         if (!_stageDic[nextIndex].IsCleared)

@@ -10,7 +10,14 @@ public class TeleporterSwitch : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-
+    private void OnEnable()
+    {
+        ResetEvent.OnStageReset += ResetSwitch;
+    }
+    private void OnDisable()
+    {
+        ResetEvent.OnStageReset -= ResetSwitch;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<CharacterMoverBase>(out var charactor) && !_teleported)
@@ -18,6 +25,13 @@ public class TeleporterSwitch : MonoBehaviour
             OnTeleported.Invoke();
             _teleported = true;
             _animator.SetBool("Push", true);
+            AudioManager.Instance.PlaySE("Switch");
         }
+    }
+
+    private void ResetSwitch()
+    {
+        _teleported = false;
+        _animator.SetBool("Push", false);
     }
 }

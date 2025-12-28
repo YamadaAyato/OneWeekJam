@@ -51,7 +51,10 @@ public abstract class CharacterMoverBase : MonoBehaviour
     protected virtual void StartMove(DirectionType dir, int step)
     {
         if (_moveCoroutine != null) return;
-
+        if (step > 1)
+        {
+            AudioManager.Instance.PlaySE("Ladder");
+        }
         _moveCoroutine = StartCoroutine(MoveRoutine(dir, step));
     }
 

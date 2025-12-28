@@ -38,6 +38,7 @@ public class PlayerMover : CharacterMoverBase
     /// </summary>
     private void SpawnEffect(DirectionType dir)
     {
+        AudioManager.Instance.PlaySE("Move");
         if (dir == DirectionType.Right)
         {
             WalkEffect walk = Instantiate(_walkEffect, transform.position + _walkOffset, Quaternion.identity);

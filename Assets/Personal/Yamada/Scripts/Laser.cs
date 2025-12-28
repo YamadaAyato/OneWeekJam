@@ -13,8 +13,6 @@ public class Laser : MonoBehaviour
     private bool _currentIsBooting;
     private Animator _animator;
     private StageManager _stageManager;
-    private SpriteRenderer _spriteRenderer;
-    private PlayerMover _playerMover;
     private BoxCollider2D _collider;
 
     /// <summary>
@@ -33,6 +31,7 @@ public class Laser : MonoBehaviour
     private void SwichLazerBoot()
     {
         Debug.Log("Laser SwichLazerBoot 呼ばれた");
+        AudioManager.Instance.PlaySE("Lazer");
         _currentIsBooting = !_currentIsBooting;
         ApplyState();
     }
@@ -50,8 +49,6 @@ public class Laser : MonoBehaviour
     private void Awake()
     {
         _stageManager = FindAnyObjectByType<StageManager>();
-        _playerMover = FindAnyObjectByType<PlayerMover>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<BoxCollider2D>();
         _animator = GetComponent<Animator>();
         _currentIsBooting = _isBooting;
@@ -65,14 +62,12 @@ public class Laser : MonoBehaviour
     private void OnEnable()
     {
         _stageManager.Move += SwichLazerBoot;
-        //_playerMover.OnMoveFinished += SwichLazerBoot;
         _stageManager.Reset += ResetBoot;
     }
 
     private void OnDisable()
     {
          _stageManager.Move -= SwichLazerBoot;
-        //_playerMover.OnMoveFinished -= SwichLazerBoot;
         _stageManager.Reset -= ResetBoot;
     }
 }
