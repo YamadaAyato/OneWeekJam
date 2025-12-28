@@ -12,7 +12,7 @@ public class PlayerInputController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Q))
             ResetEvent.RaiseStageReset();
 
         if (_playerMover.IsMoving) return;
