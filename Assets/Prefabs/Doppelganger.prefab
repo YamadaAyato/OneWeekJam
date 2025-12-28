@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Doppelganger
   _moveDistance: 1.6
-  _moveTime: 1
+  _moveTime: 0.6
 --- !u!114 &6243291972500973811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0
-  m_GravityScale: 0.3
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
