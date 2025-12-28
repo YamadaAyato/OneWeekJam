@@ -2870,10 +2870,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thron
       objectReference: {fileID: 0}
-    - target: {fileID: 6974908627580149603, guid: f952f0714c1eccf46959adadac06188d, type: 3}
-      propertyPath: m_TagString
-      value: DeathObject
-      objectReference: {fileID: 0}
     - target: {fileID: 8048584561757445620, guid: f952f0714c1eccf46959adadac06188d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3
