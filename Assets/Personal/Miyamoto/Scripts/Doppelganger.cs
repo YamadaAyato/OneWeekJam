@@ -22,11 +22,16 @@ public class Doppelganger : CharacterMoverBase
 
         var dir = _moveQueue.Dequeue();
 
+        if((dir == DirectionType.Up || dir == DirectionType.Down)
+            && _dopCol.IsLadder)
+        {
+            return;
+        }
+
         int step = 1;
 
         // 梯子のステップを読み取ってstepを更新
-        if((dir == DirectionType.Up || dir == DirectionType.Down)
-            && _dopCol.IsLadder)
+        if (_dopCol.IsLadder)
         {
             step = _dopCol.CurrentLadder.Step;
         }
