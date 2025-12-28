@@ -11,8 +11,8 @@ public class CommandRecordUI : MonoBehaviour
     [SerializeField, Tooltip("UIのプレハブ")] private ArrowSlotUI _slotPrefab;
     [SerializeField, Tooltip("指示の矢印の画像")] private Sprite _arrowImage;
     [SerializeField] private Transform _parentObject;
-    [SerializeField] private GameObject _recImage;
-    [SerializeField] private GameObject _playImage;
+    [SerializeField] private Image _recImage;
+    [SerializeField] private Image _playImage;
 
     private readonly List<ArrowSlotUI> _uiSlots = new();
     private StageManager _stageManager;
@@ -34,8 +34,8 @@ public class CommandRecordUI : MonoBehaviour
         {
             _isPlaying = true;
 
-            _recImage.SetActive(false);
-            _playImage.SetActive(true);
+            _recImage.gameObject.SetActive(false);
+            _playImage.gameObject.SetActive(true);
         }
 
     }
@@ -77,8 +77,8 @@ public class CommandRecordUI : MonoBehaviour
     {
         CreateSlots(_stageManager.MoveCount);
         _isPlaying = false;
-        _recImage.SetActive(true);
-        _playImage.SetActive(false);
+        _recImage.gameObject.SetActive(true);
+        _playImage.gameObject.SetActive(false);
     }
 
     /// <summary>
