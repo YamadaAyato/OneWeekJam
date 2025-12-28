@@ -268,13 +268,13 @@ MonoBehaviour:
   _bgmList:
   - _clip: {fileID: 8300000, guid: e45161bf06a08f7428666f9bb20f9ad6, type: 3}
     _name: Title
-    _volume: 0.3
+    _volume: 0.2
   - _clip: {fileID: 8300000, guid: c4d44d3543d752d4593cc5e8c5067582, type: 3}
     _name: StageSelect
-    _volume: 0.3
+    _volume: 0.2
   - _clip: {fileID: 8300000, guid: 47b2eb4142139cd4babc7614d74adf4a, type: 3}
     _name: Stage
-    _volume: 0.3
+    _volume: 0.2
 --- !u!4 &465592132
 Transform:
   m_ObjectHideFlags: 0
@@ -567,7 +567,7 @@ SpriteRenderer:
   m_Size: {x: 12.6, y: 5.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1245923277
