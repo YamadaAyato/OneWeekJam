@@ -27,8 +27,10 @@ public class Teleporter : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent<CharacterMoverBase>(out var charactor))
         {
-            TeleportedProcces();
+            Debug.Log("Charが入ってきた");
+            charactor.ForceStop();
             charactor.transform.position = _destination.transform.position;
+            TeleportedProcces();
         }
     }
     /// <summary>
@@ -36,8 +38,9 @@ public class Teleporter : MonoBehaviour
     /// </summary>
     private void TeleportedProcces()
     {
-        //_animator.SetBool("Teleport", true);
-        //_destination._animator.SetBool("Teleport", true);
+        Debug.Log("てれぽーとしたときのしょり");
+        _animator.SetBool("Teleport", true);
+        _destination._animator.SetBool("Teleport", true);
         _isActive = false;
         _destination._isActive = false;
     }
