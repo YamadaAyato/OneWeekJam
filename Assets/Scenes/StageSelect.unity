@@ -1249,8 +1249,8 @@ MonoBehaviour:
     MoveCount: 3
     _stageId: 0
   - _selectStage: {fileID: 0}
-    StagePrefab: {fileID: 5879509259326563942, guid: 9765f42eff8071f4b926f0c89f7ea8fc, type: 3}
-    MoveCount: 10
+    StagePrefab: {fileID: 3089830762753781263, guid: efaf41ff29ec11846b831d639ff43a4e, type: 3}
+    MoveCount: 4
     _stageId: 0
   - _selectStage: {fileID: 0}
     StagePrefab: {fileID: 1824104549080261629, guid: 103c2de4d1dc34b44a43b60fd21fdf9f, type: 3}
@@ -1261,7 +1261,7 @@ MonoBehaviour:
     MoveCount: 4
     _stageId: 0
   - _selectStage: {fileID: 0}
-    StagePrefab: {fileID: 3089830762753781263, guid: efaf41ff29ec11846b831d639ff43a4e, type: 3}
+    StagePrefab: {fileID: 5879509259326563942, guid: 9765f42eff8071f4b926f0c89f7ea8fc, type: 3}
     MoveCount: 4
     _stageId: 0
   - _selectStage: {fileID: 0}
