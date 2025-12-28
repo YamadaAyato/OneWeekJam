@@ -237,7 +237,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   _bgmPlayer: {fileID: 0}
-  _seList: []
+  _seList:
+  - _clip: {fileID: 8300000, guid: c169f960de9317747a32633585b723ec, type: 3}
+    _name: Death
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: fe576b90765fb9b4ba0da5be3f578379, type: 3}
+    _name: Move
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: a062a305b7e43b44e9a4775e85715cb1, type: 3}
+    _name: Select
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: 4c315c404a494fe4ab599e02409c534b, type: 3}
+    _name: Switch
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: 363d17b85272bd54182a0a13f354ac9e, type: 3}
+    _name: Decision
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: 8fa0051a3d165c14895aa116e32b7cf5, type: 3}
+    _name: Goal
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: d24f81115a18ab542a7820a2de96cdeb, type: 3}
+    _name: Ladder
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: caf516a436b0b33449dafa5b50f0290a, type: 3}
+    _name: Laser
+    _volume: 0.05
+  - _clip: {fileID: 8300000, guid: 378c4f2c631dc814ca4915804bcc149f, type: 3}
+    _name: Tp
+    _volume: 0.05
   _bgmList:
   - _clip: {fileID: 8300000, guid: e45161bf06a08f7428666f9bb20f9ad6, type: 3}
     _name: Title
@@ -247,7 +274,7 @@ MonoBehaviour:
     _volume: 0.05
   - _clip: {fileID: 8300000, guid: 47b2eb4142139cd4babc7614d74adf4a, type: 3}
     _name: Stage
-    _volume: 0
+    _volume: 0.05
 --- !u!4 &465592132
 Transform:
   m_ObjectHideFlags: 0
