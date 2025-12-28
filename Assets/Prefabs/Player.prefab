@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMover
   _moveDistance: 1.6
-  _moveTime: 1
+  _moveTime: 0.6
   _walkEffect: {fileID: 513601052242112396, guid: ebaafb3982ffa224fa823e5f1d78bd85, type: 3}
   _walkOffset: {x: 0, y: 0.1, z: 0}
 --- !u!114 &4851856067003691020
