@@ -522,7 +522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7008284188837181733, guid: 4832a671db669e44ea0ab0490ea758cf, type: 3}
       propertyPath: _maxPassCount
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1012,7 +1012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1929270023590315191, guid: 6f1198fcfb4650c4b8e77ee1bbb80bbc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1929270023590315191, guid: 6f1198fcfb4650c4b8e77ee1bbb80bbc, type: 3}
       propertyPath: m_LocalPosition.z
