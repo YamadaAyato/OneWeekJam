@@ -14,6 +14,7 @@ public class StageManager : MonoBehaviour
     public event Action Move;
     [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _doppelganger;
+    [SerializeField] private StartTimelineController _startTimeline;
 
     [ReadOnly, SerializeField] private Queue<DirectionType> _commandQueue = new Queue<DirectionType>();
     [ReadOnly, SerializeField] private PlayerMover _mover;
@@ -48,8 +49,13 @@ public class StageManager : MonoBehaviour
         Instantiate(_stage);
         _startPos = GameObject.Find("Start").transform;
         _player = Instantiate(_player, _startPos.position, Quaternion.identity);
+
+        // 最初は操作不可に
         _mover = _player.GetComponent<PlayerMover>();
+        _mover.enabled = false;
         _moveCount = StageDataManager.MoveCount;
+
+        _startTimeline.Play(_player, _startPos);
     }
     /// <summary>
     /// コマンドQueueに引数で与えられものを追加する
