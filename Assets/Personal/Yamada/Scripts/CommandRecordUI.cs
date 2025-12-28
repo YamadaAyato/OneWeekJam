@@ -1,34 +1,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 ///         記録ターンのコマンドをUI表示するクラス
 /// </summary>
 public class CommandRecordUI : MonoBehaviour
 {
-    //[SerializeField, Tooltip("カウント表示のテキスト")] private TMP_Text _countText;
     [SerializeField, Tooltip("UIのプレハブ")] private ArrowSlotUI _slotPrefab;
     [SerializeField, Tooltip("指示の矢印の画像")] private Sprite _arrowImage;
     [SerializeField] private Transform _parentObject;
+    [SerializeField] private Image _recImage;
+    [SerializeField] private Image _playImage;
 
     private readonly List<ArrowSlotUI> _uiSlots = new();
     private StageManager _stageManager;
     private int _curretIndex;
+    private bool _isPlaying;
 
     /// <summary>
     ///         方向を取得してUIに設定
     /// </summary>
     private void CommandRecord()
     {
-        UpdateCount();
-
         if (_curretIndex < _uiSlots.Count)
         {
             DirectionType dir = GetLastCommand();
             _uiSlots[_curretIndex].SetUI(_arrowImage, GetRotation(dir));
             _curretIndex++;
         }
+        else if (!_isPlaying)
+        {
+            _isPlaying = true;
+
+            _recImage.gameObject.SetActive(false);
+            _playImage.gameObject.SetActive(true);
+        }
+
     }
 
     /// <summary>
@@ -67,15 +76,9 @@ public class CommandRecordUI : MonoBehaviour
     private void ResetUI()
     {
         CreateSlots(_stageManager.MoveCount);
-        UpdateCount();
-    }
-
-    /// <summary>
-    ///         MoveCountをテキストで表示
-    /// </summary>
-    private void UpdateCount()
-    {
-        // _countText.text = _stageManager.MoveCount.ToString();
+        _isPlaying = false;
+        _recImage.gameObject.SetActive(true);
+        _playImage.gameObject.SetActive(false);
     }
 
     /// <summary>
