@@ -484,8 +484,8 @@ MonoBehaviour:
   _slotPrefab: {fileID: 847706040945188060, guid: 39b927257ea483f4e8cfa473954ffae8, type: 3}
   _arrowImage: {fileID: -765150924802650856, guid: c170f8ad46ed2f942921018b5bd2321c, type: 3}
   _parentObject: {fileID: 9083841674287947806}
-  _recImage: {fileID: 865146005663108265}
-  _playImage: {fileID: 7429456683956912602}
+  _recImage: {fileID: 1486863137480070956}
+  _playImage: {fileID: 354035219170952587}
 --- !u!1 &7942465033255772170
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,11 +799,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc8aa0865b2a54a4cb2f919e9090ef23, type: 3}
---- !u!1 &7429456683956912602 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8726526791446139745, guid: dc8aa0865b2a54a4cb2f919e9090ef23, type: 3}
+--- !u!114 &354035219170952587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1939269938415753008, guid: dc8aa0865b2a54a4cb2f919e9090ef23, type: 3}
   m_PrefabInstance: {fileID: 2161836243534795451}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &7750357112562844118 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8470899432174375789, guid: dc8aa0865b2a54a4cb2f919e9090ef23, type: 3}
