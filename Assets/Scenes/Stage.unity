@@ -209,6 +209,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &83740723 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5616207836034981211, guid: f02e81e7d08784c4fbfbd00025855c23, type: 3}
+  m_PrefabInstance: {fileID: 164942111}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &89289403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1953,6 +1964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 815017294}
   - component: {fileID: 815017293}
+  - component: {fileID: 815017295}
   m_Layer: 0
   m_Name: StartCamera
   m_TagString: Untagged
@@ -2018,6 +2030,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &815017295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815017292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b617507da6d07e749b7efdb34e1173e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
+  TrackerSettings:
+    BindingMode: 4
+    PositionDamping: {x: 1, y: 1, z: 1}
+    AngularDampingMode: 0
+    RotationDamping: {x: 1, y: 1, z: 1}
+    QuaternionDamping: 1
+  FollowOffset: {x: 0, y: 0, z: -10}
 --- !u!1 &830283998
 GameObject:
   m_ObjectHideFlags: 0
@@ -3876,6 +3907,169 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1866528151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1866528153}
+  - component: {fileID: 1866528152}
+  - component: {fileID: 1866528156}
+  - component: {fileID: 1866528155}
+  - component: {fileID: 1866528154}
+  m_Layer: 0
+  m_Name: GoalTimelinePlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1866528152
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866528151}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 9f0ace7ede01add43b42f4ae67c89a6d, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -2427028681424112950, guid: 9f0ace7ede01add43b42f4ae67c89a6d, type: 2}
+    value: {fileID: 1643417616}
+  - key: {fileID: -8648045824830631544, guid: 9f0ace7ede01add43b42f4ae67c89a6d, type: 2}
+    value: {fileID: 1866528154}
+  m_ExposedReferences:
+    m_References:
+    - cb3fe66016c52434b9f4d8d55cea5fa4: {fileID: 2091728014}
+    - a52960f738afb3e4baa725694bbb999f: {fileID: 815017293}
+--- !u!4 &1866528153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866528151}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1866528154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866528151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalReceiver
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 3c9532cbaf00daa4788dd6bd4af19b51, type: 2}
+    - {fileID: 11400000, guid: b406f0683b621fd488d4a43d88e66861, type: 2}
+    - {fileID: 11400000, guid: 77824794478ca4543ad5fd0d26bcf742, type: 2}
+    - {fileID: 11400000, guid: ad49970894b5be949b428807b73b6770, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1866528156}
+          m_TargetAssemblyTypeName: GoalSignalReceiver, Assembly-CSharp
+          m_MethodName: HandleDisableControl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1866528156}
+          m_TargetAssemblyTypeName: GoalSignalReceiver, Assembly-CSharp
+          m_MethodName: HandlePlayGoalAnim
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1866528156}
+          m_TargetAssemblyTypeName: GoalSignalReceiver, Assembly-CSharp
+          m_MethodName: HandleFinishGoal
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1866528156}
+          m_TargetAssemblyTypeName: GoalSignalReceiver, Assembly-CSharp
+          m_MethodName: HandleFade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1866528155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866528151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b12ff5ed81a2db48ac3da94127abad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalTimelineController
+  _director: {fileID: 1866528152}
+  _zoomCamera: {fileID: 815017293}
+  _signalReceiver: {fileID: 1866528156}
+--- !u!114 &1866528156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866528151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4556b00461be84349918ae0f74ef0ec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GoalSignalReceiver
+  _fadePanel: {fileID: 83740723}
+  _fadeTime: 1
+  _sceneName: StageSelect
 --- !u!1 &1913667474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,6 +4225,7 @@ PlayableDirector:
   m_ExposedReferences:
     m_References:
     - dd208eaff0589f347b5130d535f642e4: {fileID: 2091728014}
+    - 1c6520989ea9f4e479cabcc54f36a757: {fileID: 815017293}
 --- !u!114 &1920871817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4520,3 +4715,4 @@ SceneRoots:
   - {fileID: 2091728015}
   - {fileID: 815017294}
   - {fileID: 1920871818}
+  - {fileID: 1866528153}
