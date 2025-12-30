@@ -2,7 +2,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 /// <summary>
-///          シグナルレシーバー用クラス
+///          スタート時シグナルレシーバー用クラス
 /// </summary>
 public class StartSignalReceiver : MonoBehaviour
 {
