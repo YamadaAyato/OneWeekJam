@@ -7,6 +7,7 @@ using UnityEngine.UI;
 /// </summary>
 public class GoalSignalReceiver : MonoBehaviour
 {
+    [SerializeField] private Canvas _deleteCanvas;
     [SerializeField] private Image _fadePanel;
     [SerializeField] private float _fadeTime;
     [SerializeField] private string _sceneName;
@@ -24,14 +25,12 @@ public class GoalSignalReceiver : MonoBehaviour
     }
 
     /// <summary>
-    ///         プレイヤーの操作を無効、位置固定
+    ///         プレイヤーの操作を無効、キャンバス削除
     /// </summary>
-    public void HandleDisableControl()
+    public void HandleTimelineInit()
     {
+        _deleteCanvas.gameObject.SetActive(false);
         _player.GetComponent<PlayerInputController>().enabled = false;
-        _rb = _player.GetComponent<Rigidbody2D>();
-        _rb.bodyType = RigidbodyType2D.Kinematic;
-        _rb.linearVelocity = Vector3.zero;
     }
 
     /// <summary>
