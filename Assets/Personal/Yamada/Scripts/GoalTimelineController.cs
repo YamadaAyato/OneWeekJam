@@ -14,8 +14,8 @@ public class GoalTimelineController : MonoBehaviour
         _signalReceiver.SetPlayer(player);
 
         // カメラ追従
-        _zoomCamera.Follow = player.transform;
-        _zoomCamera.LookAt = player.transform;
+        // FollowとLookAtを統合した新しい書き方らしい
+        _zoomCamera.Target = new CameraTarget { TrackingTarget = player.transform };
 
         _director.Play();
     }
