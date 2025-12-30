@@ -17,6 +17,10 @@ public class GoalObject : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             _goalController.Play(collision.gameObject);
+            
+            // 演出的にゴールを消してプレイヤーをゴール位置に移動
+            this.gameObject.SetActive(false);
+            collision.transform.position = this.transform.position;
         }
     }
 }
