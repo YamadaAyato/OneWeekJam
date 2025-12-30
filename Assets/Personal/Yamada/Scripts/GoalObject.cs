@@ -20,7 +20,7 @@ public class GoalObject : MonoBehaviour
             
             // 演出的にゴールを消してプレイヤーをゴール位置に移動
             this.gameObject.SetActive(false);
-            collision.transform.position = this.transform.position;
+            //collision.transform.position = this.transform.position;
         }
     }
 }
