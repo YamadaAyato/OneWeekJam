@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class GoalSignalReceiver : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private string _sceneName;
+    private GameObject _player;
+    private Animator _playerAnimator;
+
+    public void SetPlayer(GameObject player)
     {
-        
+        _player = player;
+        _playerAnimator = player.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleDisableControl()
     {
-        
+        _player.GetComponent<PlayerInputController>().enabled = false;
+    }
+
+    public void HandlePlayGoalAnim()
+    {
+        _playerAnimator.SetBool("IsGoal", true);
+    }
+
+    public void HandleFinishGoal()
+    {
+        SceneLoader.LoadScene(_sceneName);
+        StageProgressManager.SetStageCleared(StageDataManager.StageId);
     }
 }
