@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 
 /// <summary>
-///         タイムラインの再生開始クラス
+///         スタート時のタイムライン制御クラス
 /// </summary>
 public class StartTimelineController : MonoBehaviour
 {
