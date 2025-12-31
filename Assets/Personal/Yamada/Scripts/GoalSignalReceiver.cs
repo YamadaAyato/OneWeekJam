@@ -11,14 +11,13 @@ public class GoalSignalReceiver : MonoBehaviour
     [SerializeField] private Image _fadePanel;
     [SerializeField] private float _fadeTime;
     [SerializeField] private string _sceneName;
-    private GameObject _player;
-    private Rigidbody2D _rb;
+    private PlayerInputController _player;
     private Animator _playerAnimator;
 
     /// <summary>
     ///         プレイヤーをセットする
     /// </summary>
-    public void SetPlayer(GameObject player)
+    public void SetPlayer(PlayerInputController player)
     {
         _player = player;
         _playerAnimator = player.GetComponent<Animator>();
@@ -31,6 +30,7 @@ public class GoalSignalReceiver : MonoBehaviour
     {
         _deleteCanvas.gameObject.SetActive(false);
         _player.GetComponent<PlayerInputController>().enabled = false;
+        _player.GetComponent <PlayerInputController>().enabled = false;
     }
 
     /// <summary>
