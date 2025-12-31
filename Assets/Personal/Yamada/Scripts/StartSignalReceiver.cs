@@ -2,7 +2,7 @@ using Unity.Cinemachine;
 using UnityEngine;
 
 /// <summary>
-///          シグナルレシーバー用クラス
+///          スタート時シグナルレシーバー用クラス
 /// </summary>
 public class StartSignalReceiver : MonoBehaviour
 {
@@ -72,7 +72,6 @@ public class StartSignalReceiver : MonoBehaviour
     /// </summary>
     public void SwitchToGameplayCamera()
     {
-        _startZoom.enabled = false;
         _startZoom.Priority = 0;
         _endZoom.Priority = 10;
     }
