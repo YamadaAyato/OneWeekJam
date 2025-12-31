@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 
 /// <summary>
@@ -17,8 +18,9 @@ public class GoalTimelineController : MonoBehaviour
     /// <param name="player"></param>
     public void Play(GameObject player)
     {
+        PlayerInputController playerInput = player.GetComponent<PlayerInputController>();
         // 動的に注入
-        _signalReceiver.SetPlayer(player);
+        _signalReceiver.SetPlayer(playerInput);
 
         // カメラ追従
         // FollowとLookAtを統合した新しい書き方らしい
